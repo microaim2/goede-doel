@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Surfrider</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <header class="header">
+    <a class="logo" href="./index.html">
+      <img src="images/logo-full.png" alt="Surfrider Foundation">
+    </a>
+
+    <nav class="navigation" aria-label="Main navigation">
+      <div class="nav-dropdown">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="learn-menu"
+        >
+          Learn <span aria-hidden="true">▾</span>
+        </button>
+
+        <ul class="nav-panel" id="learn-menu" hidden>
+          <li><a href="#mission">Our Mission</a></li>
+          <li><a href="#news">Latest News</a></li>
+          <li><a href="#campaigns">Campaigns</a></li>
+          <li><a href="#programs">Programs</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-dropdown">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="involved-menu"
+        >
+          Get Involved <span aria-hidden="true">▾</span>
+        </button>
+
+        <ul class="nav-panel" id="involved-menu" hidden>
+          <li><a href="#volunteer">Find Surfrider Near You</a></li>
+          <li><a href="#impact">Our Impact</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-dropdown">
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="give-menu"
+        >
+          Give <span aria-hidden="true">▾</span>
+        </button>
+
+        <ul class="nav-panel" id="give-menu" hidden>
+          <li><a href="#donate">Monthly Giving</a></li>
+          <li><a href="#partners">Our Partners</a></li>
+        </ul>
+      </div>
+
+      <a class="link-plain" href="#shop">Shop</a>
+    </nav>
+
+    <div class="header-actions">
+      <button
+        class="search-button flex-center"
+        type="button"
+        aria-label="Search"
+        aria-expanded="false"
+        aria-controls="site-search"
+      >
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          aria-hidden="true"
+        >
+          <circle cx="10" cy="10" r="6"></circle>
+          <path d="m15 15 6 6"></path>
+        </svg>
+      </button>
+
+      <a class="donate-button flex-center" href="#donate">Donate</a>
+    </div>
+  </header>
+
+  <section
+    id="site-search"
+    class="site-search"
+    aria-label="Search this page"
+    hidden
+  >
+    <form class="site-search-form" role="search">
+      <label for="search-query">Search this page</label>
+
+      <div class="search-row">
+        <input
+          id="search-query"
+          type="search"
+          placeholder="Try ocean, climate, donate…"
+          autocomplete="off"
+        >
+
+        <button type="submit">Search</button>
+        <button class="search-close" type="button" aria-label="Close search">
+          ✕
+        </button>
+      </div>
+    </form>
+
+    <p id="search-status" role="status"></p>
+    <ul id="search-results"></ul>
+  </section>
+
+  <main class="main-content">
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <h1 id="hero-title">Drilling is<br>killing</h1>
+
+        <p class="hero-description">
+          The Trump administration is officially pursuing an unprecedented
+          and dangerous new offshore drilling plan that will open vast
+          stretches of U.S. coastlines up to new offshore oil and gas drilling.
+        </p>
+
+        <p class="hero-callout">
+          Your voice matters — join Surfrider in the fight to end new
+          offshore drilling!
+        </p>
+
+        <a
+          class="hero-button flex-center"
+          href="https://www.surfrider.org/campaigns"
+        >
+          Take Action Now
+        </a>
+      </div>
+    </section>
+
+    <section class="mission" id="mission" aria-labelledby="mission-title">
+      <span class="mission-side mission-side-left side-label">
+        Our Mission
+      </span>
+
+      <div class="mission-panel">
+        <h2 id="mission-title">What We Fight For</h2>
+        <div class="mission-grid" id="missionGrid"></div>
+      </div>
+
+      <span class="mission-side mission-side-right side-label">
+        Where the land meets the sea
+      </span>
+    </section>
+
+    <section class="latest-news" id="news" aria-labelledby="news-title">
+      <span class="news-side side-label">Latest Updates</span>
+
+      <img
+        class="news-image"
+        src="images/news-ocean.jpg"
+        alt="Swimmer above a coral reef"
+        loading="lazy"
+      >
+
+      <div class="news-content">
+        <p class="news-label">Latest News</p>
+        <h2 id="news-title">Protect Your Skin and Our Oceans</h2>
+
+        <p class="news-description">
+          Discover which sunscreen ingredients are safe for coral reefs
+          and marine life—and which ones aren't. Get our free
+          science-backed guide.
+        </p>
+
+        <a
+          class="news-button btn-dark"
+          href="#demo-dialog"
+          data-demo="true"
+          title="Demo: this feature is not connected"
+        >
+          Learn More
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="foundation-statement"
+      id="purpose"
+      aria-label="Our purpose"
+    >
+      <p>
+        The Surfrider Foundation is dedicated to the protection and
+        enjoyment of the world’s ocean, waves, and beaches, for all
+        people, through a powerful activist network.
+      </p>
+    </section>
+
+    <section
+      class="campaign"
+      id="campaigns"
+      aria-labelledby="campaign-title"
+    >
+      <span class="campaign-side side-label">Our Campaigns</span>
+
+      <div class="campaign-content">
+        <p class="campaign-label">Featured Campaign</p>
+        <h2 id="campaign-title">Drilling Is<br>Killing</h2>
+
+        <p class="feature-description">
+          Surfrider is fighting to restore and expand ocean protections,
+          while opposing new offshore drilling in unprotected areas.
+          Join us in the fight to end new offshore drilling once and for all!
+        </p>
+
+        <div class="feature-actions">
+          <a
+            class="feature-button btn-dark"
+            href="#demo-dialog"
+            data-demo="true"
+            title="Demo: this feature is not connected"
+          >
+            Learn More
+          </a>
+
+          <a
+            class="feature-button btn-dark feature-button-outline"
+            href="https://www.surfrider.org/campaigns"
+          >
+            View All
+          </a>
+        </div>
+      </div>
+
+      <div class="campaign-art">
+        <img
+          src="images/campaign.jpg"
+          alt="Crossed-out offshore oil platform"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <section class="climate" id="programs" aria-labelledby="climate-title">
+      <div class="climate-art">
+        <img
+          src="images/climate.jpg"
+          alt="Adult and child planting along the coast"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="climate-content">
+        <h2 id="climate-title">Climate<br>Action<br>Program</h2>
+
+        <p class="feature-description">
+          Designed to harness the power of nature to fight the effects
+          of climate change on our coasts — this innovative program
+          connects volunteers to restoration projects that help protect
+          local coastlines from erosion, sequester carbon, remove invasive
+          species, and support local ecosystems.
+        </p>
+
+        <a
+          class="feature-button btn-dark"
+          href="#demo-dialog"
+          data-demo="true"
+          title="Demo: this feature is not connected"
+        >
+          Learn More
+        </a>
+      </div>
+    </section>
+
+    <section class="network" id="volunteer" aria-labelledby="network-title">
+      <span class="network-side side-label">Our Network</span>
+
+      <div class="network-content">
+        <p class="network-label">Get Involved</p>
+        <h2 id="network-title">Find<br>Surfrider<br>Near You</h2>
+
+        <p class="network-description">
+          We're always looking for volunteers to help affect change
+          locally. Join us.
+        </p>
+
+        <label class="state-label" for="network-state">Select State</label>
+
+        <select
+          id="network-state"
+          name="state"
+          aria-describedby="network-message"
+        >
+          <option value="">Select State</option>
+          <option value="CA">California</option>
+          <option value="FL">Florida</option>
+          <option value="HI">Hawaii</option>
+          <option value="NY">New York</option>
+          <option value="OR">Oregon</option>
+          <option value="WA">Washington</option>
+        </select>
+
+        <p id="network-message" class="form-message" role="status"></p>
+      </div>
+
+      <div class="network-art">
+        <img
+          src="images/volunteers.jpg"
+          alt="Woman and child collecting litter on the coast"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <section class="impact" id="impact" aria-labelledby="impact-title">
+      <div class="impact-content">
+        <p class="impact-label">Our Impact</p>
+
+        <h2 id="impact-title">
+          Our efforts are paying off.<br>
+          See what we’ve accomplished so far:
+        </h2>
+
+        <dl class="impact-stats">
+          <div class="impact-stat">
+            <dt>Chapters and Student Clubs</dt>
+            <dd>200</dd>
+          </div>
+
+          <div class="impact-stat">
+            <dt>Victories to Protect Our Coast</dt>
+            <dd>930+</dd>
+          </div>
+
+          <div class="impact-stat">
+            <dt>Volunteer Hours in 2024</dt>
+            <dd>185K</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="support" id="shop" aria-labelledby="support-title">
+      <h2 id="support-title">Show Your Support</h2>
+
+      <p class="support-subtitle">
+        100% of every purchase helps protect our coasts, waves, and beaches.
+      </p>
+
+      <div class="support-grid">
+        <article class="support-card">
+          <img
+            src="images/shop-summer.jpg"
+            alt="Blue Surfrider Foundation towel"
+            loading="lazy"
+          >
+
+          <h3>Summer is in Full Swing</h3>
+
+          <p>
+            Beat the heat and stay cool this season with all new graphic
+            tees, hats, and accessories, inspired by 90's surf styles
+            and retro illustrations.
+          </p>
+        </article>
+
+        <article class="support-card">
+          <img
+            src="images/shop-collection.jpg"
+            alt="Woman holding a surfboard and wearing a Ridge to Reef shirt"
+            loading="lazy"
+          >
+
+          <h3>Ridge to Reef Collection</h3>
+
+          <p>
+            This all new collection—created in collaboration with
+            Protect Our Winters—celebrates the ecosystems that shape
+            our adventures and the responsibility we share to protect them.
+          </p>
+        </article>
+      </div>
+
+      <a
+        class="feature-button btn-dark support-shop"
+        href="https://shop.surfrider.org/"
+      >
+        Shop Now
+      </a>
+    </section>
+
+    <section class="commitment" id="commitment" aria-label="Our commitment">
+      <p>
+        The Surfrider Foundation is committed to fostering a just,
+        equitable, diverse and inclusive organization for all people
+        who protect and enjoy the world’s ocean, waves, and beaches.
+      </p>
+
+      <a
+        class="feature-button btn-dark"
+        href="#demo-dialog"
+        data-demo="true"
+        title="Demo: this feature is not connected"
+      >
+        Learn More
+      </a>
+    </section>
+
+    <section class="partners" id="partners" aria-labelledby="partners-title">
+      <div class="partners-heading">
+        <h2 id="partners-title">We Love Our<br>Partners</h2>
+
+        <a
+          class="feature-button btn-dark feature-button-outline"
+          href="#demo-dialog"
+          data-demo="true"
+          title="Demo: this feature is not connected"
+        >
+          Join Us
+        </a>
+      </div>
+
+      <h3>Corporate</h3>
+
+      <div class="partners-grid">
+        <img src="images/gray-whale.svg" alt="Gray Whale" loading="lazy">
+        <img src="images/faherty.svg" alt="Faherty" loading="lazy">
+        <img src="images/alpaka.svg" alt="Alpaka" loading="lazy">
+        <img src="images/ripcurl.svg" alt="Rip Curl" loading="lazy">
+        <img src="images/rei.svg" alt="REI Cooperative Action Fund" loading="lazy">
+      </div>
+
+      <h3>Foundations</h3>
+
+      <div class="partners-grid">
+        <img src="images/noaa.svg" alt="NOAA" loading="lazy">
+        <img src="images/harder.svg" alt="The Harder Foundation" loading="lazy">
+        <img
+          src="images/packard.svg"
+          alt="The David and Lucile Packard Foundation"
+          loading="lazy"
+        >
+        <img
+          src="images/resources-legacy.svg"
+          alt="Resources Legacy Fund"
+          loading="lazy"
+        >
+        <img
+          src="images/surf-industry.svg"
+          alt="Surf Industry Members Association"
+          loading="lazy"
+        >
+      </div>
+    </section>
+
+    <section
+      class="monthly-giving"
+      id="donate"
+      aria-labelledby="giving-title"
+    >
+      <h2 id="giving-title">
+        $10 per month helps protect a quarter mile of your local coast.
+      </h2>
+
+      <div>
+        <p class="form-message">
+          Demo amounts: payments are not connected.
+        </p>
+
+        <div class="giving-options">
+          <a
+            class="giving-option"
+            href="#demo-dialog"
+            data-demo="true"
+            title="Demo: this feature is not connected"
+            aria-label="Donate 5 dollars per month"
+          >
+            <span class="giving-price"><sup>$</sup>5</span>
+            <span class="giving-period">/ mo</span>
+          </a>
+
+          <a
+            class="giving-option"
+            href="#demo-dialog"
+            data-demo="true"
+            title="Demo: this feature is not connected"
+            aria-label="Donate 10 dollars per month"
+          >
+            <span class="giving-price"><sup>$</sup>10</span>
+            <span class="giving-period">/ mo</span>
+          </a>
+
+          <a
+            class="giving-option"
+            href="#demo-dialog"
+            data-demo="true"
+            title="Demo: this feature is not connected"
+            aria-label="Donate 25 dollars per month"
+          >
+            <span class="giving-price"><sup>$</sup>25</span>
+            <span class="giving-period">/ mo</span>
+          </a>
+
+          <a
+            class="giving-option"
+            href="#demo-dialog"
+            data-demo="true"
+            title="Demo: this feature is not connected"
+            aria-label="Donate 50 dollars per month"
+          >
+            <span class="giving-price"><sup>$</sup>50</span>
+            <span class="giving-period">/ mo</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <div class="footer-layout">
+        <a class="footer-logo" href="./index.html">
+          <img src="images/Group.png" alt="Surfrider Foundation">
+        </a>
+
+        <section
+          class="footer-newsletter"
+          aria-labelledby="newsletter-title"
+        >
+          <h2 id="newsletter-title">Stay Informed</h2>
+
+          <p class="form-message">
+            Demo form: subscriptions are not connected.
+          </p>
+
+          <form class="newsletter-form">
+            <div class="form-name-row">
+              <div class="form-field">
+                <label for="first-name">First name<span>*</span></label>
+                <input
+                  id="first-name"
+                  name="firstName"
+                  type="text"
+                  autocomplete="given-name"
+                  required
+                >
+              </div>
+
+              <div class="form-field">
+                <label for="last-name">Last name<span>*</span></label>
+                <input
+                  id="last-name"
+                  name="lastName"
+                  type="text"
+                  autocomplete="family-name"
+                  required
+                >
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email<span>*</span></label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+              >
+            </div>
+
+            <div class="form-field">
+              <label for="postal-code">Postal code<span>*</span></label>
+              <input
+                id="postal-code"
+                name="postalCode"
+                type="text"
+                autocomplete="postal-code"
+                required
+              >
+            </div>
+
+            <p class="newsletter-notice">
+              By clicking <em>Subscribe</em> you agree to receive
+              communications from The Surfrider Foundation.
+              You may unsubscribe from these communications at any time.
+              For information on how to unsubscribe, as well as our
+              privacy practices and commitment to protecting your privacy,
+              please review our
+              <a
+                href="#demo-dialog"
+                data-demo="true"
+                title="Demo: this feature is not connected"
+              >Privacy Policy</a>.
+            </p>
+
+            <button class="subscribe-button btn-dark" type="submit">
+              Subscribe
+            </button>
+
+            <p class="form-message" role="status"></p>
+          </form>
+        </section>
+
+        <nav
+          class="footer-navigation"
+          aria-label="Footer navigation"
+          id="footerNav"
+        ></nav>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <nav
+          class="footer-legal"
+          aria-label="Legal links"
+          id="footerLegal"
+        ></nav>
+fdsfdfds
+        <p>© 2026 microaim</p>
+      </div>
+    </div>
+  </footer>
+
+  <dialog id="demo-dialog" aria-labelledby="demo-title">
+    <h2 id="demo-title">Demo page</h2>
+    <p id="demo-message"></p>
+
+    <form method="dialog">
+      <button class="feature-button btn-dark" type="submit">Close</button>
+    </form>
+  </dialog>
+</body>
+</html>
