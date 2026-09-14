@@ -1,0 +1,57 @@
+.monthly-giving {
+  display: grid;
+  grid-template-columns: 340px minmax(0, 1fr);
+  align-items: center;
+  gap: 60px;
+  max-width: 1104px;
+  margin: 0 auto;
+  padding: 0 0 24px;
+}
+
+.monthly-giving h2 {
+  margin: 0;
+  color: #080808;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.giving-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.giving-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px 0;
+  color: var(--color-dark);
+  text-decoration: none;
+}
+
+.giving-price {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.giving-price sup {
+  position: static;
+  margin-top: 6px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.giving-period {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+.giving-option:hover {
+  color: var(--color-accent);
+}

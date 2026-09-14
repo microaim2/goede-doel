@@ -1,0 +1,431 @@
+@media (hover: hover) {
+  .mission-card a:hover {
+    text-decoration: none;
+  }
+
+  .mission-card a:hover::before {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .mission-card a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mission-card a::before,
+  .mission-card a::after {
+    transition: none;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero {
+    min-height: 740px;
+    padding: 155px 7% 110px;
+  }
+
+  .hero-content {
+    max-width: none;
+    margin: 0;
+  }
+
+  .hero h1 {
+    max-width: 850px;
+    margin-bottom: 32px;
+    font-size: clamp(80px, 6.8vw, 112px);
+    line-height: 1.07;
+  }
+
+  .hero-description,
+  .hero-callout {
+    max-width: 680px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  .hero-button {
+    min-width: 250px;
+    min-height: 68px;
+    padding: 16px 28px;
+    font-size: 16px;
+    letter-spacing: 3px;
+  }
+}
+
+@media (max-width: 1250px) {
+  .latest-news {
+    margin-left: 40px;
+    margin-right: 40px;
+    gap: 60px;
+  }
+
+  .foundation-statement {
+    margin-left: 40px;
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .support,
+  .commitment {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .support-grid {
+    gap: 32px;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 1100px) {
+  .header {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .navigation {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .climate {
+    gap: 40px;
+  }
+}
+
+@media (max-width: 1050px) {
+  .hero {
+    padding: 24px 40px 130px;
+  }
+
+  .mission-panel {
+    padding: 60px 32px 32px;
+  }
+
+  .mission-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 36px 24px;
+  }
+
+  .footer-layout {
+    grid-template-columns: 70px minmax(0, 1fr);
+  }
+
+  .footer-navigation {
+    grid-column: 2;
+    margin-left: 0;
+  }
+
+  .footer-newsletter h2 {
+    margin-bottom: 32px;
+  }
+
+  .footer-bottom-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 1000px) {
+  .partners {
+    padding: 60px 32px;
+  }
+
+  .partners-grid {
+    gap: 24px;
+  }
+
+  .monthly-giving {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 20px;
+    padding: 32px 24px;
+  }
+
+  .monthly-giving h2 {
+    max-width: 440px;
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+    padding: 16px;
+  }
+
+  .logo {
+    align-self: flex-start;
+  }
+
+  .logo img {
+    width: 160px;
+  }
+
+  .navigation {
+    position: relative;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .navigation a,
+  .nav-toggle {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown {
+    position: static;
+  }
+
+  .nav-panel {
+    left: 0;
+    width: 100%;
+  }
+
+  .header-actions {
+    width: 100%;
+    margin-left: 0;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .site-search {
+    padding: 20px 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 8vw, 44px);
+  }
+
+  .mission {
+    margin-top: -50px;
+    padding: 0 12px;
+  }
+
+  .mission-panel {
+    padding: 36px 24px;
+  }
+
+  .mission-panel h2 {
+    margin-bottom: 32px;
+    font-size: 30px;
+  }
+
+  .mission-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .mission-card p {
+    margin-bottom: 16px;
+  }
+
+  .mission-side,
+  .news-side,
+  .campaign-side,
+  .network-side {
+    display: none;
+  }
+
+  .latest-news {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+    margin: 70px 12px 0;
+  }
+
+  .news-label {
+    margin-bottom: 20px;
+  }
+
+  .news-content h2 {
+    margin-bottom: 24px;
+  }
+
+  .foundation-statement {
+    margin: 70px 12px 0;
+  }
+
+  .campaign,
+  .climate,
+  .network {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 12px;
+    gap: 32px;
+  }
+
+  .campaign,
+  .network {
+    margin-top: 70px;
+  }
+
+  .campaign-art {
+    order: -1;
+  }
+
+  .campaign-art,
+  .climate-art,
+  .network-art {
+    max-width: 400px;
+    justify-self: center;
+  }
+
+  .climate {
+    margin-top: 60px;
+  }
+
+  .climate-content {
+    padding: 0 12px;
+  }
+
+  .climate h2 {
+    margin-bottom: 30px;
+  }
+
+  .impact {
+    padding: 50px 24px;
+  }
+
+  .impact-stats {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
+  }
+
+  .support,
+  .commitment {
+    margin: 70px 12px 0;
+  }
+
+  .support-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  .support-card {
+    padding: 20px;
+  }
+
+  .support-card h3 {
+    margin-top: 24px;
+    font-size: 22px;
+  }
+
+  .support-shop {
+    margin-top: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .main-content {
+    padding: 0 12px 40px;
+  }
+
+  .hero {
+    min-height: 540px;
+    padding: 32px 20px 110px;
+  }
+
+  .footer-main {
+    padding: 32px 24px 40px;
+    background-image: none;
+  }
+
+  .footer-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer-navigation {
+    grid-column: auto;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+    width: 100%;
+  }
+
+  .footer-column {
+    padding-top: 20px;
+    border-top: 1px solid rgba(37, 40, 42, 0.2);
+  }
+
+  .footer-column h3 {
+    margin-bottom: 12px;
+  }
+
+  .footer-column ul {
+    gap: 0;
+  }
+
+  .footer-column a {
+    display: block;
+    padding: 10px 0;
+    line-height: 1.4;
+  }
+
+  .form-name-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .footer-bottom {
+    padding: 28px 20px;
+  }
+
+  .partners {
+    margin-top: 70px;
+    padding: 32px 20px;
+  }
+
+  .partners-heading {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+
+  .partners h2 {
+    font-size: 32px;
+    line-height: 1.05;
+    letter-spacing: -1px;
+  }
+
+  .partners-heading .feature-button {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+  }
+
+  .partners h3 {
+    margin-bottom: 16px;
+    font-size: 13px;
+  }
+
+  .partners-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    justify-items: center;
+  }
+
+  .partners-grid img {
+    width: 100%;
+    max-width: 110px;
+    height: 64px;
+  }
+
+  .partners-grid img:last-child {
+    grid-column: 1 / -1;
+    width: calc((100% - 16px) / 2);
+  }
+
+  .partners-grid + h3 {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(37, 40, 42, 0.2);
+  }
+
+  .giving-options {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

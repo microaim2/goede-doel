@@ -1,0 +1,16 @@
+#demo-dialog {
+  max-width: 440px;
+  width: calc(100% - 32px);
+  padding: 28px;
+  border: 0;
+  color: var(--color-dark);
+  line-height: 1.5;
+}
+
+#demo-dialog::backdrop {
+  background: #0008;
+}
+
+#demo-dialog h2 {
+  margin-top: 0;
+}

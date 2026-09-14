@@ -1,0 +1,41 @@
+.hero {
+  min-height: 560px;
+  padding: 0 72px 150px;
+  background-color: #344957;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)),
+    url("images/hero.jpg");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.hero-content {
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.hero h1 {
+  max-width: 560px;
+  margin: 0 0 20px;
+  font-size: clamp(44px, 5.5vw, 76px);
+  line-height: 1.02;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.hero-description,
+.hero-callout {
+  max-width: 610px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.hero-description {
+  margin: 0 0 18px;
+}
+
+.hero-callout {
+  margin: 0 0 32px;
+  font-weight: 700;
+}

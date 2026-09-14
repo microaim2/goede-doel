@@ -1,0 +1,45 @@
+.partners {
+  max-width: 1260px;
+  margin: 100px auto 0;
+  padding: 90px 70px;
+  background-color: #9ccdc3;
+}
+
+.partners-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  margin-bottom: 36px;
+}
+
+.partners h2 {
+  margin: 0;
+  font-size: clamp(36px, 4.5vw, 68px);
+  line-height: 0.98;
+  letter-spacing: -1.5px;
+}
+
+.partners h3 {
+  margin: 0 0 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: center;
+  gap: 36px;
+}
+
+.partners-grid + h3 {
+  margin-top: 64px;
+}
+
+.partners-grid img {
+  display: block;
+  width: 100%;
+  height: 90px;
+  object-fit: contain;
+}

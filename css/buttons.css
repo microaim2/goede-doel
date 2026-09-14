@@ -1,0 +1,100 @@
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-dark);
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.btn-dark:hover {
+  background-color: #40464a;
+}
+
+.search-button {
+  width: 28px;
+  height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.donate-button {
+  width: 130px;
+  height: 40px;
+  background-color: #d35b5e;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.search-row button {
+  padding: 12px;
+  border: 0;
+  background-color: var(--color-dark);
+  color: #fff;
+  cursor: pointer;
+}
+
+.hero-button {
+  display: inline-flex;
+  min-height: 54px;
+  padding: 16px 36px;
+  background-color: #fff;
+  color: var(--color-dark);
+  box-shadow: 0 3px 5px #0004;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.hero-button:hover {
+  background-color: #e9eef1;
+}
+
+.news-button {
+  min-width: 170px;
+  min-height: 56px;
+  padding: 16px 24px;
+  font-size: 13px;
+  letter-spacing: 2px;
+}
+
+.feature-button {
+  min-width: 166px;
+  min-height: 54px;
+  padding: 14px 22px;
+  border: 2px solid var(--color-dark);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.feature-button-outline {
+  background-color: transparent;
+  color: var(--color-dark);
+}
+
+.feature-button-outline:hover {
+  background-color: #e0e8ed;
+}
+
+.subscribe-button {
+  justify-self: start;
+  min-width: 152px;
+  min-height: 54px;
+  padding: 16px 24px;
+  border: 0;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
