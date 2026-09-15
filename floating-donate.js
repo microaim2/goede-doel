@@ -26,7 +26,7 @@
     animation?.cancel();
 
     if (shouldFloat) {
-      // Сохраняем место кнопки, чтобы шапка не меняла размер.
+     
       const size = button.getBoundingClientRect();
 
       slot.style.width = `${size.width}px`;

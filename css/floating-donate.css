@@ -21,3 +21,36 @@
     bottom: max(16px, env(safe-area-inset-bottom));
   }
 }
+
+@keyframes donate-wave {
+  0%, 100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+
+  25% {
+    translate: 0 -5px;
+    rotate: -2deg;
+  }
+
+  50% {
+    translate: 0 -8px;
+    rotate: 0deg;
+  }
+
+  75% {
+    translate: 0 -5px;
+    rotate: 2deg;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .donate-button.is-floating {
+    animation: donate-wave 3s ease-in-out infinite;
+  }
+
+  .donate-button.is-floating:hover,
+  .donate-button.is-floating:focus-visible {
+    animation-play-state: paused;
+  }
+}

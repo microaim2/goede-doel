@@ -24,8 +24,8 @@
 }
 
 .donate-button {
-  width: 130px;
-  height: 40px;
+  width: 180px;
+  height: 60px;
   background-color: #d35b5e;
   color: #fff;
   font-size: 14px;
@@ -33,6 +33,7 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
+  border-radius: 12px;
 }
 
 .search-row button {
