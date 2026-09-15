@@ -1,0 +1,23 @@
+.donate-slot {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.donate-button.is-floating {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 100;
+  min-height: 48px;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px #0003;
+  font-size: 16px;
+}
+
+@media (max-width: 700px) {
+  .donate-button.is-floating {
+    right: max(16px, env(safe-area-inset-right));
+    bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
