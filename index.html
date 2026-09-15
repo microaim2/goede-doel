@@ -325,63 +325,231 @@
       </a>
     </section>
 
-    <section
-      class="monthly-giving"
-      id="donate"
-      aria-labelledby="giving-title"
-    >
-      <h2 id="giving-title">
-        $10 per month helps protect a quarter mile of your local coast.
-      </h2>
-
-      <div>
-
-        <div class="giving-options">
-          <a
-            class="giving-option"
-            href="#demo-dialog"
-            data-demo="true"
-            title="Demo: this feature is not connected"
-            aria-label="Donate 5 dollars per month"
-          >
-            <span class="giving-price"><sup>$</sup>5</span>
-            <span class="giving-period">/ mo</span>
-          </a>
-
-          <a
-            class="giving-option"
-            href="#demo-dialog"
-            data-demo="true"
-            title="Demo: this feature is not connected"
-            aria-label="Donate 10 dollars per month"
-          >
-            <span class="giving-price"><sup>$</sup>10</span>
-            <span class="giving-period">/ mo</span>
-          </a>
-
-          <a
-            class="giving-option"
-            href="#demo-dialog"
-            data-demo="true"
-            title="Demo: this feature is not connected"
-            aria-label="Donate 25 dollars per month"
-          >
-            <span class="giving-price"><sup>$</sup>25</span>
-            <span class="giving-period">/ mo</span>
-          </a>
-
-          <a
-            class="giving-option"
-            href="#demo-dialog"
-            data-demo="true"
-            title="Demo: this feature is not connected"
-            aria-label="Donate 50 dollars per month"
-          >
-            <span class="giving-price"><sup>$</sup>50</span>
-            <span class="giving-period">/ mo</span>
-          </a>
-        </div>
+    <section class="donation" id="donate" aria-labelledby="giving-title">
+      <div class="donation-intro">
+        <p class="donation-eyebrow">Support our coasts</p>
+        <h2 id="giving-title">Help protect our ocean</h2>
+        <p>
+          Your support helps protect clean water, reduce plastic pollution,
+          and care for the beaches we all love.
+        </p>
+        <p>
+          Choose a monthly gift or a one-time donation to explore how giving works.
+        </p>
       </div>
+
+      <form
+        class="donation-form"
+        id="donation-form"
+        autocomplete="off"
+        novalidate
+        onsubmit="return false"
+        aria-labelledby="donation-form-title"
+        aria-describedby="donation-demo-note"
+      >
+        <h3 id="donation-form-title">Make a donation</h3>
+
+        <fieldset class="donation-group">
+          <legend>Donation frequency</legend>
+
+          <div class="donation-choices">
+            <label class="donation-choice">
+              <input
+                type="radio"
+                name="donation-frequency"
+                value="monthly"
+                checked
+              >
+              <span>Monthly</span>
+            </label>
+
+            <label class="donation-choice">
+              <input
+                type="radio"
+                name="donation-frequency"
+                value="once"
+              >
+              <span>One-time</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset class="donation-group">
+          <legend>Donation amount (USD)</legend>
+
+          <div class="donation-amounts">
+            <button
+              type="button"
+              data-donation-amount="5"
+              aria-pressed="false"
+            >$5</button>
+
+            <button
+              type="button"
+              data-donation-amount="10"
+              aria-pressed="true"
+            >$10</button>
+
+            <button
+              type="button"
+              data-donation-amount="25"
+              aria-pressed="false"
+            >$25</button>
+
+            <button
+              type="button"
+              data-donation-amount="50"
+              aria-pressed="false"
+            >$50</button>
+          </div>
+
+          <label class="donation-field" for="donation-other">
+            Other amount (USD)
+            <input
+              id="donation-other"
+              type="number"
+              min="1"
+              max="1000000"
+              step="0.01"
+              inputmode="decimal"
+              placeholder="Enter an amount"
+              aria-describedby="donation-amount-error"
+            >
+          </label>
+
+          <p
+            class="donation-error"
+            id="donation-amount-error"
+            role="status"
+          ></p>
+        </fieldset>
+
+        <div class="donation-details">
+          <label class="donation-field" for="donation-name">
+            Full name
+            <input
+              id="donation-name"
+              type="text"
+              placeholder="Demo Person"
+              maxlength="100"
+            >
+          </label>
+
+          <label class="donation-field" for="donation-email">
+            Email
+            <input
+              id="donation-email"
+              type="email"
+              placeholder="demo@example.com"
+              maxlength="150"
+            >
+          </label>
+        </div>
+
+        <fieldset class="donation-group">
+          <legend>Payment method</legend>
+
+          <div class="donation-choices">
+            <label class="donation-choice">
+              <input
+                type="radio"
+                name="donation-payment"
+                value="card"
+                checked
+              >
+              <span>Card</span>
+            </label>
+
+            <label class="donation-choice">
+              <input
+                type="radio"
+                name="donation-payment"
+                value="paypal"
+              >
+              <span>PayPal</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <div class="donation-card-fields" id="donation-card-fields">
+          <label class="donation-field" for="donation-card-number">
+            Card number
+            <input
+              id="donation-card-number"
+              type="text"
+              inputmode="numeric"
+              placeholder="0000 0000 0000 0000"
+              maxlength="23"
+            >
+          </label>
+
+          <div class="donation-details">
+            <label class="donation-field" for="donation-expiry">
+              MM / YY
+              <input
+                id="donation-expiry"
+                type="text"
+                inputmode="numeric"
+                placeholder="MM / YY"
+                maxlength="7"
+              >
+            </label>
+
+            <label class="donation-field" for="donation-cvc">
+              CVC
+              <input
+                id="donation-cvc"
+                type="text"
+                inputmode="numeric"
+                placeholder="000"
+                maxlength="4"
+              >
+            </label>
+          </div>
+        </div>
+
+        <p class="donation-hint" id="donation-paypal-note" hidden>
+          PayPal demo selected. No sign-in or redirect will take place.
+        </p>
+
+        <div
+          class="donation-total"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          <span>Total (USD)</span>
+          <strong id="donation-total">$10 / month</strong>
+        </div>
+
+        <button
+          class="donation-submit"
+          id="donation-submit"
+          type="button"
+          disabled
+        >
+          Donate $10 monthly
+        </button>
+
+        <p class="donation-hint" id="donation-demo-note">
+          School project demo — no payment will be processed.
+        </p>
+
+        <p class="donation-hint">
+          Use made-up details only. These fields are optional
+          and are not sent or saved by this page.
+        </p>
+
+        <p
+          class="donation-message"
+          id="donation-message"
+          role="status"
+          tabindex="-1"
+        ></p>
+
+        <noscript>
+          <p>Enable JavaScript to try the donation demo.</p>
+        </noscript>
+      </form>
     </section>
   </main>
 
@@ -486,7 +654,6 @@
           aria-label="Legal links"
           id="footerLegal"
         ></nav>
-fdsfdfds
         <p>© 2026 microaim</p>
       </div>
     </div>

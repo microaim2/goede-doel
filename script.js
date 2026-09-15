@@ -177,16 +177,16 @@ const searchStatus = document.querySelector("#search-status");
 
 function closeSearch() {
   searchPanel.hidden = true;
-  searchButton.setAttribute("aria-expanded", "false");
+  searchButton?.setAttribute("aria-expanded", "false");
 }
 
-searchButton.addEventListener("click", () => {
+searchButton?.addEventListener("click", () => {
   closeMenus();
 
   const willOpen = searchPanel.hidden;
 
   searchPanel.hidden = !willOpen;
-  searchButton.setAttribute("aria-expanded", String(willOpen));
+  searchButton?.setAttribute("aria-expanded", String(willOpen));
 
   if (willOpen) {
     searchInput.focus();
@@ -195,7 +195,7 @@ searchButton.addEventListener("click", () => {
 
 searchClose.addEventListener("click", () => {
   closeSearch();
-  searchButton.focus();
+  searchButton?.focus();
 });
 
 document.addEventListener("keydown", (event) => {
@@ -210,7 +210,7 @@ document.addEventListener("keydown", (event) => {
     openDropdown.querySelector(".nav-toggle").focus();
   } else if (!searchPanel.hidden) {
     closeSearch();
-    searchButton.focus();
+    searchButton?.focus();
   }
 });
 
@@ -332,3 +332,124 @@ document.addEventListener("click", (event) => {
 
   demoDialog.showModal();
 });
+
+// Donation demo: only amount and option selections are read.
+// Personal and card input values are never read, transmitted or stored.
+(() => {
+  const form = document.querySelector("#donation-form");
+  if (!form) return;
+
+  const amounts = [...form.querySelectorAll("[data-donation-amount]")];
+  const other = form.querySelector("#donation-other");
+  const total = form.querySelector("#donation-total");
+  const donate = form.querySelector("#donation-submit");
+  const error = form.querySelector("#donation-amount-error");
+  const message = form.querySelector("#donation-message");
+  const cardFields = form.querySelector("#donation-card-fields");
+  const paypalNote = form.querySelector("#donation-paypal-note");
+  let selectedAmount = 10;
+
+  const money = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 2
+  });
+
+  function updateDonation() {
+    const monthly = form.querySelector(
+      '[name="donation-frequency"]:checked'
+    ).value === "monthly";
+
+    const card = form.querySelector(
+      '[name="donation-payment"]:checked'
+    ).value === "card";
+
+    const amount = selectedAmount === null
+      ? other.valueAsNumber
+      : selectedAmount;
+
+    const valid =
+      Number.isFinite(amount) &&
+      amount >= 1 &&
+      amount <= 1000000 &&
+      (selectedAmount !== null || other.validity.valid);
+
+    amounts.forEach((button) => {
+      button.setAttribute(
+        "aria-pressed",
+        String(selectedAmount === Number(button.dataset.donationAmount))
+      );
+    });
+
+    other.setAttribute("aria-invalid", String(!valid));
+
+    error.textContent = valid
+      ? ""
+      : "Enter $1 to $1,000,000, with up to two decimal places.";
+
+    total.textContent = valid
+      ? `${money.format(amount)}${monthly ? " / month" : " one-time"}`
+      : "Choose an amount";
+
+    donate.textContent = valid
+      ? `Donate ${money.format(amount)}${monthly ? " monthly" : " once"}`
+      : "Try donation demo";
+
+    cardFields.hidden = !card;
+
+    cardFields.querySelectorAll("input").forEach((input) => {
+      input.disabled = !card;
+    });
+
+    paypalNote.hidden = card;
+    message.textContent = "";
+
+    return valid;
+  }
+
+  amounts.forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedAmount = Number(button.dataset.donationAmount);
+      other.value = "";
+      updateDonation();
+    });
+  });
+
+  other.addEventListener("input", () => {
+    selectedAmount = null;
+    updateDonation();
+  });
+
+  form.querySelectorAll('input[type="radio"]').forEach((input) => {
+    input.addEventListener("change", updateDonation);
+  });
+
+  function showDonationDemo() {
+    const valid = updateDonation();
+
+    message.textContent =
+      "School project demo — no payment will be processed. " +
+      "No donation was made. Your details were not sent or saved." +
+      (valid ? "" : " Choose a valid amount to preview the total.");
+
+    message.focus();
+  }
+
+  donate.addEventListener("click", showDonationDemo);
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    showDonationDemo();
+  });
+
+  form.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && event.target.matches("input")) {
+      event.preventDefault();
+      showDonationDemo();
+    }
+  });
+
+  updateDonation();
+  donate.disabled = false;
+})();
