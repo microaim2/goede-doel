@@ -4,7 +4,7 @@
   background-color: #344957;
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)),
-    url("images/hero.jpg");
+    url("../images/hero.jpg");
   background-size: cover;
   background-position: center;
   color: #fff;
