@@ -324,233 +324,6 @@
         Shop Now
       </a>
     </section>
-
-    <section class="donation" id="donate" aria-labelledby="giving-title">
-      <div class="donation-intro">
-        <p class="donation-eyebrow">Support our coasts</p>
-        <h2 id="giving-title">Help protect our ocean</h2>
-        <p>
-          Your support helps protect clean water, reduce plastic pollution,
-          and care for the beaches we all love.
-        </p>
-        <p>
-          Choose a monthly gift or a one-time donation to explore how giving works.
-        </p>
-      </div>
-
-      <form
-        class="donation-form"
-        id="donation-form"
-        autocomplete="off"
-        novalidate
-        onsubmit="return false"
-        aria-labelledby="donation-form-title"
-        aria-describedby="donation-demo-note"
-      >
-        <h3 id="donation-form-title">Make a donation</h3>
-
-        <fieldset class="donation-group">
-          <legend>Donation frequency</legend>
-
-          <div class="donation-choices">
-            <label class="donation-choice">
-              <input
-                type="radio"
-                name="donation-frequency"
-                value="monthly"
-                checked
-              >
-              <span>Monthly</span>
-            </label>
-
-            <label class="donation-choice">
-              <input
-                type="radio"
-                name="donation-frequency"
-                value="once"
-              >
-              <span>One-time</span>
-            </label>
-          </div>
-        </fieldset>
-
-        <fieldset class="donation-group">
-          <legend>Donation amount (USD)</legend>
-
-          <div class="donation-amounts">
-            <button
-              type="button"
-              data-donation-amount="5"
-              aria-pressed="false"
-            >$5</button>
-
-            <button
-              type="button"
-              data-donation-amount="10"
-              aria-pressed="true"
-            >$10</button>
-
-            <button
-              type="button"
-              data-donation-amount="25"
-              aria-pressed="false"
-            >$25</button>
-
-            <button
-              type="button"
-              data-donation-amount="50"
-              aria-pressed="false"
-            >$50</button>
-          </div>
-
-          <label class="donation-field" for="donation-other">
-            Other amount (USD)
-            <input
-              id="donation-other"
-              type="number"
-              min="1"
-              max="1000000"
-              step="0.01"
-              inputmode="decimal"
-              placeholder="Enter an amount"
-              aria-describedby="donation-amount-error"
-            >
-          </label>
-
-          <p
-            class="donation-error"
-            id="donation-amount-error"
-            role="status"
-          ></p>
-        </fieldset>
-
-        <div class="donation-details">
-          <label class="donation-field" for="donation-name">
-            Full name
-            <input
-              id="donation-name"
-              type="text"
-              placeholder="Demo Person"
-              maxlength="100"
-            >
-          </label>
-
-          <label class="donation-field" for="donation-email">
-            Email
-            <input
-              id="donation-email"
-              type="email"
-              placeholder="demo@example.com"
-              maxlength="150"
-            >
-          </label>
-        </div>
-
-        <fieldset class="donation-group">
-          <legend>Payment method</legend>
-
-          <div class="donation-choices">
-            <label class="donation-choice">
-              <input
-                type="radio"
-                name="donation-payment"
-                value="card"
-                checked
-              >
-              <span>Card</span>
-            </label>
-
-            <label class="donation-choice">
-              <input
-                type="radio"
-                name="donation-payment"
-                value="paypal"
-              >
-              <span>PayPal</span>
-            </label>
-          </div>
-        </fieldset>
-
-        <div class="donation-card-fields" id="donation-card-fields">
-          <label class="donation-field" for="donation-card-number">
-            Card number
-            <input
-              id="donation-card-number"
-              type="text"
-              inputmode="numeric"
-              placeholder="0000 0000 0000 0000"
-              maxlength="23"
-            >
-          </label>
-
-          <div class="donation-details">
-            <label class="donation-field" for="donation-expiry">
-              MM / YY
-              <input
-                id="donation-expiry"
-                type="text"
-                inputmode="numeric"
-                placeholder="MM / YY"
-                maxlength="7"
-              >
-            </label>
-
-            <label class="donation-field" for="donation-cvc">
-              CVC
-              <input
-                id="donation-cvc"
-                type="text"
-                inputmode="numeric"
-                placeholder="000"
-                maxlength="4"
-              >
-            </label>
-          </div>
-        </div>
-
-        <p class="donation-hint" id="donation-paypal-note" hidden>
-          PayPal demo selected. No sign-in or redirect will take place.
-        </p>
-
-        <div
-          class="donation-total"
-          aria-live="polite"
-          aria-atomic="true"
-        >
-          <span>Total (USD)</span>
-          <strong id="donation-total">$10 / month</strong>
-        </div>
-
-        <button
-          class="donation-submit"
-          id="donation-submit"
-          type="button"
-          disabled
-        >
-          Donate $10 monthly
-        </button>
-
-        <p class="donation-hint" id="donation-demo-note">
-          School project demo — no payment will be processed.
-        </p>
-
-        <p class="donation-hint">
-          Use made-up details only. These fields are optional
-          and are not sent or saved by this page.
-        </p>
-
-        <p
-          class="donation-message"
-          id="donation-message"
-          role="status"
-          tabindex="-1"
-        ></p>
-
-        <noscript>
-          <p>Enable JavaScript to try the donation demo.</p>
-        </noscript>
-      </form>
-    </section>
   </main>
 
   <footer class="footer">
@@ -654,6 +427,7 @@
           aria-label="Legal links"
           id="footerLegal"
         ></nav>
+
         <p>© 2026 microaim</p>
       </div>
     </div>
@@ -666,6 +440,188 @@
     <form method="dialog">
       <button class="feature-button btn-dark" type="submit">Close</button>
     </form>
+  </dialog>
+
+  <dialog
+    class="giving-dialog"
+    id="donate"
+    aria-labelledby="giving-dialog-title"
+    aria-describedby="giving-demo-note"
+  >
+    <button
+      class="giving-close"
+      type="button"
+      aria-label="Close donation window"
+    >×</button>
+
+    <h2 id="giving-dialog-title">
+      <svg
+        class="giving-shield"
+        viewBox="0 0 28 32"
+        fill="none"
+        aria-hidden="true"
+      >
+        <path
+          d="M14 2 25 6v10c0 7-5 11-11 14C8 27 3 23 3 16V6Z"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <rect
+          x="9"
+          y="13"
+          width="10"
+          height="9"
+          rx="1"
+          fill="currentColor"
+        />
+        <path
+          d="M11 13v-3a3 3 0 0 1 6 0v3"
+          stroke="currentColor"
+          stroke-width="2"
+        />
+        <path d="M14 16v3" stroke="white" stroke-width="2"/>
+      </svg>
+
+      Secure donation
+    </h2>
+
+    <fieldset class="giving-frequency">
+      <legend class="giving-sr-only">Donation frequency</legend>
+
+      <label>
+        <input type="radio" name="giving-frequency" value="once">
+        <span>Give once</span>
+      </label>
+
+      <label>
+        <input
+          type="radio"
+          name="giving-frequency"
+          value="monthly"
+          checked
+        >
+        <span><b aria-hidden="true">♥</b> Monthly</span>
+      </label>
+    </fieldset>
+
+    <div
+      class="giving-presets"
+      role="group"
+      aria-label="Donation amount in euros"
+    >
+      <button type="button" data-giving-amount="180" aria-pressed="false">
+        €180
+      </button>
+      <button type="button" data-giving-amount="90" aria-pressed="false">
+        €90
+      </button>
+      <button type="button" data-giving-amount="40" aria-pressed="false">
+        €40
+      </button>
+      <button type="button" data-giving-amount="15" aria-pressed="false">
+        €15
+      </button>
+      <button type="button" data-giving-amount="8" aria-pressed="false">
+        €8
+      </button>
+      <button type="button" data-giving-amount="5" aria-pressed="false">
+        €5
+      </button>
+    </div>
+
+    <label class="giving-amount-field" for="giving-amount">
+      <span class="giving-sr-only">Donation amount in euros</span>
+      <span aria-hidden="true">€</span>
+
+      <input
+        id="giving-amount"
+        type="number"
+        inputmode="decimal"
+        min="1"
+        max="1000000"
+        step="0.01"
+        value="20"
+        aria-describedby="giving-error"
+      >
+
+      <span class="giving-currency">EUR</span>
+    </label>
+
+    <p class="giving-error" id="giving-error" role="status"></p>
+
+    <div class="giving-bottom">
+      <button
+        class="giving-comment-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="giving-comment-box"
+      >
+        Add comment
+      </button>
+
+      <div id="giving-comment-box" hidden>
+        <label for="giving-comment">Comment (demo only)</label>
+        <textarea
+          id="giving-comment"
+          rows="2"
+          maxlength="500"
+          autocomplete="off"
+          placeholder="Try a sample comment"
+        ></textarea>
+      </div>
+
+      <p class="giving-summary" id="giving-summary" aria-live="polite">
+        €20 monthly
+      </p>
+
+      <div class="giving-wallets">
+        <button
+          class="giving-google"
+          type="button"
+          data-giving-method="Google Pay"
+          aria-label="Google Pay"
+        >
+          <span aria-hidden="true">G</span> Pay
+        </button>
+
+        <button
+          class="giving-paypal"
+          type="button"
+          data-giving-method="PayPal"
+        >
+          PayPal
+        </button>
+      </div>
+
+      <button
+        class="giving-other"
+        type="button"
+        data-giving-method="Other methods"
+      >
+        Donate with other methods
+      </button>
+
+      <div
+        class="giving-card-brands"
+        aria-label="Card methods shown for demonstration"
+      >
+        <span>VISA</span>
+        <span>Mastercard</span>
+        <span>AMEX</span>
+        <span>Discover</span>
+      </div>
+
+      <p class="giving-note" id="giving-demo-note">
+        School project demo — no payment will be processed.
+      </p>
+
+      <p
+        class="giving-message"
+        id="giving-message"
+        role="status"
+        tabindex="-1"
+      ></p>
+    </div>
   </dialog>
 </body>
 </html>

@@ -333,123 +333,146 @@ document.addEventListener("click", (event) => {
   demoDialog.showModal();
 });
 
-// Donation demo: only amount and option selections are read.
-// Personal and card input values are never read, transmitted or stored.
+// Local donation window.
+// Payment buttons only display a demo message.
 (() => {
-  const form = document.querySelector("#donation-form");
-  if (!form) return;
+  const dialog = document.querySelector("#donate");
 
-  const amounts = [...form.querySelectorAll("[data-donation-amount]")];
-  const other = form.querySelector("#donation-other");
-  const total = form.querySelector("#donation-total");
-  const donate = form.querySelector("#donation-submit");
-  const error = form.querySelector("#donation-amount-error");
-  const message = form.querySelector("#donation-message");
-  const cardFields = form.querySelector("#donation-card-fields");
-  const paypalNote = form.querySelector("#donation-paypal-note");
-  let selectedAmount = 10;
+  if (!dialog || dialog.tagName !== "DIALOG") return;
 
-  const money = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2
-  });
+  const amount = dialog.querySelector("#giving-amount");
+  const presets = [
+    ...dialog.querySelectorAll("[data-giving-amount]")
+  ];
+  const summary = dialog.querySelector("#giving-summary");
+  const error = dialog.querySelector("#giving-error");
+  const message = dialog.querySelector("#giving-message");
+  const commentToggle = dialog.querySelector(".giving-comment-toggle");
+  const commentBox = dialog.querySelector("#giving-comment-box");
 
-  function updateDonation() {
-    const monthly = form.querySelector(
-      '[name="donation-frequency"]:checked'
-    ).value === "monthly";
+  let opener = null;
 
-    const card = form.querySelector(
-      '[name="donation-payment"]:checked'
-    ).value === "card";
-
-    const amount = selectedAmount === null
-      ? other.valueAsNumber
-      : selectedAmount;
+  function update() {
+    const value = amount.valueAsNumber;
 
     const valid =
-      Number.isFinite(amount) &&
-      amount >= 1 &&
-      amount <= 1000000 &&
-      (selectedAmount !== null || other.validity.valid);
+      Number.isFinite(value) &&
+      amount.validity.valid &&
+      value >= 1;
 
-    amounts.forEach((button) => {
+    const monthly = dialog.querySelector(
+      '[name="giving-frequency"]:checked'
+    ).value === "monthly";
+
+    presets.forEach((button) => {
       button.setAttribute(
         "aria-pressed",
-        String(selectedAmount === Number(button.dataset.donationAmount))
+        String(
+          valid &&
+          Number(button.dataset.givingAmount) === value
+        )
       );
     });
 
-    other.setAttribute("aria-invalid", String(!valid));
+    amount.setAttribute("aria-invalid", String(!valid));
 
     error.textContent = valid
       ? ""
-      : "Enter $1 to $1,000,000, with up to two decimal places.";
+      : "Enter €1 to €1,000,000, with up to two decimal places.";
 
-    total.textContent = valid
-      ? `${money.format(amount)}${monthly ? " / month" : " one-time"}`
-      : "Choose an amount";
+    summary.textContent = valid
+      ? `€${value.toLocaleString("en-IE", {
+          maximumFractionDigits: 2
+        })} ${monthly ? "monthly" : "one-time"}`
+      : "Choose a valid donation amount.";
 
-    donate.textContent = valid
-      ? `Donate ${money.format(amount)}${monthly ? " monthly" : " once"}`
-      : "Try donation demo";
-
-    cardFields.hidden = !card;
-
-    cardFields.querySelectorAll("input").forEach((input) => {
-      input.disabled = !card;
-    });
-
-    paypalNote.hidden = card;
     message.textContent = "";
 
     return valid;
   }
 
-  amounts.forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedAmount = Number(button.dataset.donationAmount);
-      other.value = "";
-      updateDonation();
+  document.querySelectorAll('a[href="#donate"]').forEach((link) => {
+    link.setAttribute("aria-haspopup", "dialog");
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      opener = link;
+      update();
+      dialog.showModal();
     });
   });
 
-  other.addEventListener("input", () => {
-    selectedAmount = null;
-    updateDonation();
+  dialog.querySelector(".giving-close").addEventListener("click", () => {
+    dialog.close();
   });
 
-  form.querySelectorAll('input[type="radio"]').forEach((input) => {
-    input.addEventListener("change", updateDonation);
-  });
+  dialog.addEventListener("click", (event) => {
+    const rect = dialog.getBoundingClientRect();
 
-  function showDonationDemo() {
-    const valid = updateDonation();
+    const outside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
 
-    message.textContent =
-      "School project demo — no payment will be processed. " +
-      "No donation was made. Your details were not sent or saved." +
-      (valid ? "" : " Choose a valid amount to preview the total.");
-
-    message.focus();
-  }
-
-  donate.addEventListener("click", showDonationDemo);
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    showDonationDemo();
-  });
-
-  form.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && event.target.matches("input")) {
-      event.preventDefault();
-      showDonationDemo();
+    if (event.target === dialog && outside) {
+      dialog.close();
     }
   });
 
-  updateDonation();
-  donate.disabled = false;
+  dialog.addEventListener("close", () => {
+    dialog.querySelector("#giving-comment").value = "";
+    commentBox.hidden = true;
+    commentToggle.setAttribute("aria-expanded", "false");
+
+    opener?.focus();
+  });
+
+  presets.forEach((button) => {
+    button.addEventListener("click", () => {
+      amount.value = button.dataset.givingAmount;
+      update();
+    });
+  });
+
+  amount.addEventListener("input", update);
+
+  dialog.querySelectorAll('[name="giving-frequency"]').forEach((input) => {
+    input.addEventListener("change", update);
+  });
+
+  commentToggle.addEventListener("click", () => {
+    commentBox.hidden = !commentBox.hidden;
+
+    commentToggle.setAttribute(
+      "aria-expanded",
+      String(!commentBox.hidden)
+    );
+
+    if (!commentBox.hidden) {
+      dialog.querySelector("#giving-comment").focus();
+    }
+  });
+
+  dialog.querySelectorAll("[data-giving-method]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!update()) {
+        amount.focus();
+        return;
+      }
+
+      message.textContent =
+        `${button.dataset.givingMethod}: school project demo — ` +
+        "no payment will be processed. No data was sent or saved.";
+
+      message.focus();
+    });
+  });
+
+  update();
+
+  if (location.hash === "#donate") {
+    dialog.showModal();
+  }
 })();
