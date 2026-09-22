@@ -332,9 +332,6 @@ document.addEventListener("click", (event) => {
 
   demoDialog.showModal();
 });
-
-// Local donation window.
-// Payment buttons only display a demo message.
 (() => {
   const dialog = document.querySelector("#donate");
 
