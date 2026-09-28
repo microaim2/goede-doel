@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 56px;
+  gap: 24px;
   min-height: 72px;
   padding: 20px 24px;
   background-color: var(--color-page);
@@ -23,22 +23,13 @@
 .navigation {
   display: flex;
   align-items: center;
-  gap: 46px;
+  gap: 28px;
 }
 
 .navigation a {
   font-size: 16px;
   font-weight: 700;
   white-space: nowrap;
-}
-
-/* Header navigation */
-.header {
-  gap: 24px;
-}
-
-.navigation {
-  gap: 28px;
 }
 
 .header-links {
