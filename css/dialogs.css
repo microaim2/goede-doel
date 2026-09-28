@@ -1,4 +1,5 @@
 #demo-dialog {
+
   width: calc(100% - 32px);
   max-width: 440px;
   padding: 28px;
@@ -13,4 +14,113 @@
 
 #demo-dialog h2 {
   margin-top: 0;
+}
+
+/* Article windows */
+.article-dialog {
+  position: fixed;
+  width: min(760px, calc(100% - 32px));
+  max-height: 90vh;
+  max-height: 90dvh;
+  margin: auto;
+  padding: 0;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--color-dark);
+  box-shadow: 0 24px 80px #0004;
+}
+
+.article-dialog::backdrop {
+  background: #102632bb;
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+.article-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  color: #25282a;
+  font-size: 30px;
+  cursor: pointer;
+  box-shadow: 0 2px 12px #0003;
+}
+
+.article-image {
+  display: block;
+  width: 100%;
+  height: clamp(180px, 30vw, 300px);
+  object-fit: cover;
+}
+
+.article-content {
+  padding: 32px;
+}
+
+.article-label {
+  margin: 0 0 12px;
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.article-content h2 {
+  margin: 0 0 20px;
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.15;
+}
+
+#article-body p {
+  margin: 0 0 16px;
+  line-height: 1.75;
+}
+
+.article-tip {
+  margin: 24px 0;
+  padding: 20px;
+  border-left: 4px solid var(--color-accent);
+  background: #edf5f8;
+}
+
+.article-tip h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.article-tip p {
+  margin: 0;
+}
+
+#article-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 100%;
+  text-align: center;
+  white-space: normal;
+}
+
+@media (max-width: 600px) {
+  .article-content {
+    padding: 24px 20px;
+  }
+
+  #article-action {
+    width: 100%;
+  }
 }

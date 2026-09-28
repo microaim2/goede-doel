@@ -165,22 +165,21 @@
 
       <div class="news-content">
         <p class="news-label">Latest News</p>
-        <h2 id="news-title">Protect Your Skin and Our Oceans</h2>
+        <h2 id="news-title">Plan a Thoughtful Beach Day</h2>
 
         <p class="news-description">
-          Discover which sunscreen ingredients are safe for coral reefs
-          and marine life—and which ones aren't. Get our free
-          science-backed guide.
+          Prepare for your next beach visit with a simple checklist
+          and practical ideas for reducing the litter you leave behind.
         </p>
 
         <a
-          class="news-button btn-dark"
-          href="#demo-dialog"
-          data-demo="true"
-          title="Demo: this feature is not connected"
+            class="news-button btn-dark"
+            href="#article-dialog"
+            data-article="sunscreen"
         >
-          Learn More
+         Learn More
         </a>
+
       </div>
     </section>
 
@@ -216,9 +215,8 @@
         <div class="feature-actions">
           <a
             class="feature-button btn-dark"
-            href="#demo-dialog"
-            data-demo="true"
-            title="Demo: this feature is not connected"
+            href="#article-dialog"
+            data-article="drilling"
           >
             Learn More
           </a>
@@ -263,13 +261,13 @@
           species, and support local ecosystems.
         </p>
 
-        <a
-          class="feature-button btn-dark"
-          href="#demo-dialog"
-          data-demo="true"
-          title="Demo: this feature is not connected"
+        <a    
+        class="feature-button btn-dark"
+        href="#article-dialog"
+        data-article="climate"
         >
-          Learn More
+        Learn More
+      </a>
         </a>
       </div>
     </section>
@@ -750,7 +748,37 @@
         aria-live="polite"
         tabindex="-1"
       ></p>
+
     </div>
   </dialog>
+  <dialog
+  class="article-dialog"
+  id="article-dialog"
+  aria-labelledby="article-title"
+>
+  <button
+    class="article-close"
+    type="button"
+    aria-label="Close article"
+    autofocus
+  >×</button>
+
+  <img class="article-image" id="article-image" alt="">
+
+  <div class="article-content">
+    <p class="article-label">Explore & take action</p>
+    <h2 id="article-title"></h2>
+
+    <div id="article-body"></div>
+
+    <div class="article-tip">
+      <h3>Start with one action</h3>
+      <p id="article-tip"></p>
+    </div>
+
+    <a class="feature-button btn-dark" id="article-action"></a>
+  </div>
+</dialog>
+
 </body>
 </html>

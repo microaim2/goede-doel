@@ -277,3 +277,236 @@ stateSelect?.addEventListener("change", () => {
   mobile.addEventListener("change", syncMenu);
   syncMenu();
 })();
+
+// Topic articles
+(() => {
+  const articles = {
+    plastic: {
+      title: "Less Plastic, Cleaner Coasts",
+      image: "images/volunteers.jpg",
+      alt: "Volunteers collecting litter on the coast",
+      paragraphs: [
+        "Plastic reduction starts before a beach cleanup. Think about the disposable items you use regularly and which ones you could avoid or replace.",
+        "A cleanup is also a chance to observe what washes ashore. Recording the types of litter you find can help your group choose a practical next project."
+      ],
+      tip: "For your next beach visit, bring a reusable bottle and take all your litter home.",
+      action: "Find volunteer opportunities",
+      target: "#volunteer"
+    },
+
+    ocean: {
+      title: "Protect Our Ocean",
+      image: "images/news-ocean.jpg",
+      alt: "Swimmer above a coral reef",
+      paragraphs: [
+        "Ocean protection connects everyday choices with decisions about how we use our coastlines. Learn about the issues affecting a place you care about.",
+        "Explore a campaign, read its background, and find out what action its organisers are asking people to take."
+      ],
+      tip: "Choose one coastal campaign and read about its goals before getting involved.",
+      action: "Explore the featured campaign",
+      target: "#campaigns"
+    },
+
+    beach: {
+      title: "Beaches for Everyone",
+      image: "images/shop-collection.jpg",
+      alt: "Woman holding a surfboard",
+      paragraphs: [
+        "Planning a beach visit involves more than finding a stretch of sand. Clear access information helps people understand how to reach and enjoy the coast.",
+        "Look for marked public entrances, transport options, accessible routes, and local visitor information. Respect signs and the surrounding community."
+      ],
+      tip: "Before your next visit, check the beach's official access and accessibility information.",
+      action: "Connect with the volunteer network",
+      target: "#volunteer"
+    },
+
+    coasts: {
+      title: "Care for Our Coastlines",
+      image: "images/climate.jpg",
+      alt: "Adult and child planting along the coast",
+      paragraphs: [
+        "Coastal restoration projects give volunteers a way to care for the places they visit. Activities may include planting, site maintenance, and observing changes over time.",
+        "Join an organised project and follow its guidance. Each location has its own needs, and restoration work should suit the site."
+      ],
+      tip: "Look for an organised restoration day and ask what equipment and preparation you need.",
+      action: "Explore the climate program",
+      target: "#programs"
+    },
+
+    water: {
+      title: "Get Involved in Clean Water",
+      image: "images/news-ocean.jpg",
+      alt: "Ocean swimmer above a reef",
+      paragraphs: [
+        "Water quality is part of caring for a coastline. Learning where local information comes from is a useful first step toward getting involved.",
+        "Ask local volunteer groups whether they run water monitoring or education activities, and what training participants need."
+      ],
+      tip: "Find your local authority's beach water information page and save it for future visits.",
+      action: "Find a volunteer group",
+      target: "#volunteer"
+    },
+
+    sunscreen: {
+      title: "Plan a Thoughtful Beach Day",
+      image: "images/news-ocean.jpg",
+      alt: "Swimmer exploring the ocean above a coral reef",
+      paragraphs: [
+        "A thoughtful beach day starts with preparation. Bring what you need, read visitor guidance, and plan how you will take packaging and litter home.",
+        "This school project does not provide a sunscreen ingredient guide. For product and sun-protection advice, consult a qualified health professional and relevant local guidance."
+      ],
+      tip: "Make a reusable beach checklist: water bottle, sun protection, belongings, and a bag for your litter.",
+      action: "Explore plastic reduction",
+      article: "plastic"
+    },
+
+    drilling: {
+      title: "Understand the Drilling Campaign",
+      image: "images/campaign.jpg",
+      alt: "Crossed-out offshore oil platform",
+      paragraphs: [
+        "The featured campaign focuses on opposition to new offshore drilling. This project introduces the topic and points visitors toward the organisation's campaign information.",
+        "Before taking action, read the current campaign details, check which areas are involved, and review the specific request being made."
+      ],
+      tip: "Read a campaign's background and current call to action before sharing it.",
+      action: "Visit Surfrider campaigns",
+      target: "https://www.surfrider.org/campaigns"
+    },
+
+    climate: {
+      title: "Join Coastal Restoration",
+      image: "images/climate.jpg",
+      alt: "Adult and child working on a coastal planting project",
+      paragraphs: [
+        "The Climate Action Program section introduces volunteering through coastal restoration. Taking part can also be a way to learn about the landscape from project organisers.",
+        "Before joining, check the meeting point, activity requirements, equipment list, and whether registration is needed."
+      ],
+      tip: "Choose a volunteer activity that fits your availability and ask the organiser how to prepare.",
+      action: "Find volunteer opportunities",
+      target: "#volunteer"
+    }
+  };
+
+  const dialog = document.querySelector("#article-dialog");
+  if (!dialog) return;
+
+  const title = dialog.querySelector("#article-title");
+  const image = dialog.querySelector("#article-image");
+  const body = dialog.querySelector("#article-body");
+  const tip = dialog.querySelector("#article-tip");
+  const action = dialog.querySelector("#article-action");
+  const close = dialog.querySelector(".article-close");
+
+  let opener = null;
+  let currentArticle = null;
+  let nextSection = null;
+
+  function showArticle(key, trigger) {
+    const article = articles[key];
+    if (!article) return;
+
+    if (!dialog.open) {
+      opener = trigger;
+    }
+
+    currentArticle = article;
+    title.textContent = article.title;
+    image.src = article.image;
+    image.alt = article.alt;
+    tip.textContent = article.tip;
+
+    body.replaceChildren();
+
+    article.paragraphs.forEach((text) => {
+      const paragraph = document.createElement("p");
+      paragraph.textContent = text;
+      body.append(paragraph);
+    });
+
+    action.textContent = article.action;
+    action.href = article.article
+      ? "#article-dialog"
+      : article.target;
+
+    if (article.target?.startsWith("https://")) {
+      action.target = "_blank";
+      action.rel = "noopener noreferrer";
+      action.setAttribute(
+        "aria-label",
+        `${article.action} (opens in a new tab)`
+      );
+    } else {
+      action.removeAttribute("target");
+      action.removeAttribute("rel");
+      action.removeAttribute("aria-label");
+    }
+
+    if (!dialog.open) {
+      dialog.showModal();
+    }
+
+    dialog.scrollTop = 0;
+    close.focus();
+  }
+
+  document.querySelectorAll("[data-article]").forEach((link) => {
+    link.setAttribute("aria-haspopup", "dialog");
+    link.setAttribute("aria-controls", "article-dialog");
+
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
+      showArticle(link.dataset.article, link);
+    });
+  });
+
+  close.addEventListener("click", () => dialog.close());
+
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+
+    const rect = dialog.getBoundingClientRect();
+    const outside =
+      event.clientX < rect.left ||
+      event.clientX > rect.right ||
+      event.clientY < rect.top ||
+      event.clientY > rect.bottom;
+
+    if (outside) dialog.close();
+  });
+
+  action.addEventListener("click", (event) => {
+    if (currentArticle?.article) {
+      event.preventDefault();
+      showArticle(currentArticle.article);
+      return;
+    }
+
+    if (currentArticle?.target?.startsWith("#")) {
+      event.preventDefault();
+      nextSection = document.querySelector(currentArticle.target);
+      dialog.close();
+    }
+  });
+
+  dialog.addEventListener("close", () => {
+    if (nextSection) {
+      const section = nextSection;
+      nextSection = null;
+
+      const hadTabindex = section.hasAttribute("tabindex");
+      if (!hadTabindex) section.setAttribute("tabindex", "-1");
+
+      section.focus({ preventScroll: true });
+      section.scrollIntoView({ block: "start" });
+
+      if (!hadTabindex) {
+        section.addEventListener(
+          "blur",
+          () => section.removeAttribute("tabindex"),
+          { once: true }
+        );
+      }
+    } else {
+      opener?.focus({ preventScroll: true });
+    }
+  });
+})();
