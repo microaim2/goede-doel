@@ -1,5 +1,4 @@
 #demo-dialog {
-
   width: calc(100% - 32px);
   max-width: 440px;
   padding: 28px;
@@ -107,9 +106,6 @@ body:has(dialog[open]) {
 }
 
 #article-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   max-width: 100%;
   text-align: center;
   white-space: normal;
