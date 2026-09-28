@@ -21,14 +21,31 @@
       <img src="images/logo-full.png" alt="Surfrider Foundation">
     </a>
 
-    <nav class="navigation" aria-label="Main navigation">
-      <a
-        class="donate-button flex-center"
-        href="#donate"
-        aria-haspopup="dialog"
-        aria-controls="donate"
-      >Donate</a>
-    </nav>
+    <button
+  class="menu-toggle"
+  type="button"
+  aria-expanded="false"
+  aria-controls="header-links"
+  hidden
+>
+  Menu
+</button>
+
+   <nav class="navigation" aria-label="Main navigation">
+     <div class="header-links" id="header-links">
+      <a href="#mission">Mission</a>
+      <a href="#campaigns">Campaigns</a>
+      <a href="#volunteer">Get Involved</a>
+      <a href="#impact">Impact</a>
+     </div>
+
+    <a
+      class="donate-button flex-center"
+      href="#donate"
+      aria-haspopup="dialog"
+      aria-controls="donate"
+    >Donate</a>
+</nav>
   </header>
 
   <main class="main-content">

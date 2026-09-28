@@ -230,3 +230,50 @@ stateSelect?.addEventListener("change", () => {
 
   if (location.hash === "#donate") dialog.showModal();
 })();
+
+// Mobile navigation
+(() => {
+  const toggle = document.querySelector(".menu-toggle");
+  const links = document.querySelector("#header-links");
+  const mobile = window.matchMedia("(max-width: 900px)");
+
+  if (!toggle || !links) return;
+
+  toggle.hidden = false;
+
+  function setMenu(open) {
+    links.classList.toggle("is-collapsed", !open);
+    toggle.setAttribute("aria-expanded", String(open));
+    toggle.textContent = open ? "Close menu" : "Menu";
+  }
+
+  function syncMenu() {
+    setMenu(!mobile.matches);
+  }
+
+  toggle.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    setMenu(!open);
+  });
+
+  links.addEventListener("click", (event) => {
+    if (!mobile.matches || !event.target.closest("a")) return;
+
+    setMenu(false);
+    toggle.focus();
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (
+      event.key === "Escape" &&
+      mobile.matches &&
+      toggle.getAttribute("aria-expanded") === "true"
+    ) {
+      setMenu(false);
+      toggle.focus();
+    }
+  });
+
+  mobile.addEventListener("change", syncMenu);
+  syncMenu();
+})();
