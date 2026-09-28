@@ -1,6 +1,6 @@
 .hero {
   min-height: 560px;
-  padding: 0 72px 150px;
+  padding: 64px 72px 150px;
   background-color: #344957;
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0)),
