@@ -16,10 +16,6 @@
   background: #15232db3;
 }
 
-body:has(.giving-dialog[open]) {
-  overflow: hidden;
-}
-
 .giving-close {
   position: absolute;
   top: 4px;
@@ -48,17 +44,6 @@ body:has(.giving-dialog[open]) {
   height: 32px;
   flex-shrink: 0;
   color: #00bc80;
-}
-
-.giving-sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
 }
 
 .giving-frequency {
@@ -153,7 +138,7 @@ body:has(.giving-dialog[open]) {
 .giving-bottom {
   display: grid;
   gap: 14px;
-  margin-top: 130px;
+  margin-top: 32px;
 }
 
 .giving-comment-toggle {
@@ -293,7 +278,4 @@ body:has(.giving-dialog[open]) {
     font-size: 22px;
   }
 
-  .giving-bottom {
-    margin-top: 40px;
-  }
 }
