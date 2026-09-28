@@ -64,8 +64,8 @@
   content: "";
   position: absolute;
   z-index: -1;
-  left: 50%;
   top: 50%;
+  left: 50%;
   width: 130px;
   height: 130px;
   border-radius: 50%;

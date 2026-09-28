@@ -1,6 +1,6 @@
 #demo-dialog {
-  max-width: 440px;
   width: calc(100% - 32px);
+  max-width: 440px;
   padding: 28px;
   border: 0;
   color: var(--color-dark);

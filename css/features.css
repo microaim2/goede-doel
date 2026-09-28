@@ -90,8 +90,8 @@
   max-width: 340px;
   margin: 0 0 50px;
   font-size: 16px;
-  line-height: 1.4;
   font-weight: 700;
+  line-height: 1.4;
 }
 
 .state-label {
@@ -113,7 +113,6 @@
   border: 0;
   background-color: transparent;
   color: var(--color-dark);
-  font: inherit;
   font-size: 13px;
   cursor: pointer;
 }

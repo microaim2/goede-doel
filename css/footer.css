@@ -5,10 +5,10 @@
 .footer-main {
   padding: 36px 32px 140px;
   background-color: #a5c9df;
-  background-image: url("images/footer.png");
-  background-size: cover;
+  background-image: url("../images/footer.png");
   background-position: center bottom;
   background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .footer-layout {
@@ -53,6 +53,9 @@
   font-size: 12px;
 }
 
+.form-field label span {
+  color: #8b1e2a;
+}
 
 .form-field input {
   width: 100%;
@@ -63,7 +66,6 @@
   border-radius: 0;
   background-color: var(--color-page);
   color: var(--color-dark);
-  font: inherit;
 }
 
 .newsletter-notice {
@@ -73,7 +75,9 @@
 }
 
 .newsletter-notice a {
-  color: var(--color-accent);
+  color: #064b70;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .form-message {
@@ -83,7 +87,7 @@
 }
 
 .form-message:empty {
-  display: none;
+  min-height: 1px;
 }
 
 .footer-navigation {

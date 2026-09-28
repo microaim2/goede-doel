@@ -7,45 +7,40 @@
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
+  transition: background-color 180ms ease, filter 180ms ease;
 }
 
 .btn-dark:hover {
   background-color: #40464a;
 }
 
-.search-button {
-  width: 28px;
-  height: 40px;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-}
-
 .donate-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   width: 180px;
-  height: 60px;
-  background-color: #d35b5e;
+  min-height: 60px;
+  padding: 0 20px;
+  border-radius: 12px;
+  background-color: #b64148;
   color: #fff;
   font-size: 14px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 12px;
+  transition: background-color 180ms ease, box-shadow 180ms ease;
 }
 
-.search-row button {
-  padding: 12px;
-  border: 0;
-  background-color: var(--color-dark);
-  color: #fff;
-  cursor: pointer;
+.donate-button:hover {
+  background-color: #96363d;
+  box-shadow: 0 4px 14px #0002;
 }
 
 .hero-button {
   display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 54px;
   padding: 16px 36px;
   background-color: #fff;
@@ -56,10 +51,12 @@
   letter-spacing: 1.5px;
   text-transform: uppercase;
   text-decoration: none;
+  transition: background-color 180ms ease, transform 180ms ease;
 }
 
 .hero-button:hover {
   background-color: #e9eef1;
+  transform: translateY(-2px);
 }
 
 .news-button {
@@ -71,12 +68,21 @@
 }
 
 .feature-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-width: 166px;
   min-height: 54px;
   padding: 14px 22px;
   border: 2px solid var(--color-dark);
   font-size: 12px;
   letter-spacing: 2px;
+  text-align: center;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.feature-button:hover {
+  transform: translateY(-2px);
 }
 
 .feature-button-outline {

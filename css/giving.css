@@ -46,8 +46,8 @@ body:has(.giving-dialog[open]) {
 .giving-shield {
   width: 28px;
   height: 32px;
-  color: #00bc80;
   flex-shrink: 0;
+  color: #00bc80;
 }
 
 .giving-sr-only {

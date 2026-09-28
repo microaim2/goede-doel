@@ -2,18 +2,16 @@
   const header = document.querySelector(".header");
   const button = header?.querySelector(".donate-button");
 
-  if (!button || button.closest(".donate-slot")) return;
+  if (!header || !button || button.closest(".donate-slot")) return;
 
   const slot = document.createElement("span");
   slot.className = "donate-slot";
-
   button.before(slot);
   slot.append(button);
 
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   );
-
   let floating = false;
   let animation = null;
 
@@ -26,11 +24,8 @@
     animation?.cancel();
 
     if (shouldFloat) {
-     
-      const size = button.getBoundingClientRect();
-
-      slot.style.width = `${size.width}px`;
-      slot.style.height = `${size.height}px`;
+      slot.style.width = `${before.width}px`;
+      slot.style.height = `${before.height}px`;
     }
 
     button.classList.toggle("is-floating", shouldFloat);
@@ -41,37 +36,24 @@
       slot.style.height = "";
     }
 
-    if (!animate || reducedMotion.matches) return;
+    if (!animate || reducedMotion.matches || !shouldFloat) return;
 
     const after = button.getBoundingClientRect();
-
     const startTop = Math.max(
       12,
-      Math.min(
-        before.top,
-        window.innerHeight - before.height - 12
-      )
+      Math.min(before.top, window.innerHeight - before.height - 12)
     );
-
     const startLeft = Math.max(
       12,
-      Math.min(
-        before.left,
-        window.innerWidth - before.width - 12
-      )
+      Math.min(before.left, window.innerWidth - before.width - 12)
     );
 
     animation = button.animate(
       [
         {
-          transform: `translate(
-            ${startLeft - after.left}px,
-            ${startTop - after.top}px
-          )`
+          transform: `translate(${startLeft - after.left}px, ${startTop - after.top}px)`
         },
-        {
-          transform: "translate(0, 0)"
-        }
+        { transform: "translate(0, 0)" }
       ],
       {
         duration: 450,
@@ -86,7 +68,6 @@
     () => update(),
     { threshold: 0 }
   );
-
   observer.observe(header);
 
   window.addEventListener("resize", () => {
@@ -94,9 +75,7 @@
     update(false);
   });
 
-  reducedMotion.addEventListener("change", () => {
-    if (reducedMotion.matches) {
-      animation?.cancel();
-    }
+  reducedMotion.addEventListener?.("change", () => {
+    if (reducedMotion.matches) animation?.cancel();
   });
 })();

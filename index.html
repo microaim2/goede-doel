@@ -4,52 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Surfrider</title>
+  <title>Surfrider Foundation | Protect Our Oceans</title>
+  <meta
+    name="description"
+    content="Learn about the Surfrider Foundation and join the fight to protect our oceans, waves, and beaches."
+  >
 
   <link rel="stylesheet" href="css/style.css">
   <script src="script.js" defer></script>
-  <link rel="stylesheet" href="css/floating-donate.css">
   <script src="floating-donate.js" defer></script>
 </head>
 
 <body>
   <header class="header">
-    <a class="logo" href="./index.html">
+    <a class="logo" href="./index.html" aria-label="Surfrider Foundation home">
       <img src="images/logo-full.png" alt="Surfrider Foundation">
     </a>
 
-    <div class="navigation" aria-label="Main navigation">
-      <a class="donate-button flex-center" href="#donate">Donate</a>
-    </div>
+    <nav class="navigation" aria-label="Main navigation">
+      <a
+        class="donate-button flex-center"
+        href="#donate"
+        aria-haspopup="dialog"
+        aria-controls="donate"
+      >Donate</a>
+    </nav>
   </header>
-
-  <section
-    id="site-search"
-    class="site-search"
-    aria-label="Search this page"
-    hidden
-  >
-    <form class="site-search-form" role="search">
-      <label for="search-query">Search this page</label>
-
-      <div class="search-row">
-        <input
-          id="search-query"
-          type="search"
-          placeholder="Try ocean, climate, donate…"
-          autocomplete="off"
-        >
-
-        <button type="submit">Search</button>
-        <button class="search-close" type="button" aria-label="Close search">
-          ✕
-        </button>
-      </div>
-    </form>
-
-    <p id="search-status" role="status"></p>
-    <ul id="search-results"></ul>
-  </section>
 
   <main class="main-content">
     <section class="hero" id="home" aria-labelledby="hero-title">
@@ -70,6 +50,8 @@
         <a
           class="hero-button flex-center"
           href="https://www.surfrider.org/campaigns"
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Take Action Now
         </a>
@@ -77,22 +59,85 @@
     </section>
 
     <section class="mission" id="mission" aria-labelledby="mission-title">
-      <span class="mission-side mission-side-left side-label">
+      <span class="mission-side mission-side-left side-label" aria-hidden="true">
         Our Mission
       </span>
 
       <div class="mission-panel">
         <h2 id="mission-title">What We Fight For</h2>
-        <div class="mission-grid" id="missionGrid"></div>
+        <div class="mission-grid" id="missionGrid">
+          <article class="mission-card">
+            <img src="images/icon-plastic.svg" alt="" width="40" height="40">
+            <h3>Plastic Reduction</h3>
+            <p>Reducing the impact of plastics in the marine environments that surround us.</p>
+            <a
+              class="link-plain"
+              href="https://www.surfrider.org/programs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore plastic reduction</a>
+          </article>
+
+          <article class="mission-card">
+            <img src="images/icon-ocean.svg" alt="" width="40" height="40">
+            <h3>Ocean Protection</h3>
+            <p>Defending our ocean from challenges threatening the vitality of the ecosystem.</p>
+            <a
+              class="link-plain"
+              href="https://www.surfrider.org/programs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore ocean protection</a>
+          </article>
+
+          <article class="mission-card">
+            <img src="images/icon-beach.svg" alt="" width="40" height="40">
+            <h3>Beach Access</h3>
+            <p>Working with decision-makers to ensure full and fair beach access for all to enjoy.</p>
+            <a
+              class="link-plain"
+              href="https://www.surfrider.org/programs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore beach access</a>
+          </article>
+
+          <article class="mission-card">
+            <img src="images/icon-climate.svg" alt="" width="40" height="40">
+            <h3>Coasts &amp; Climate</h3>
+            <p>Taking on issues that threaten our beaches and natural shorelines.</p>
+            <a
+              class="link-plain"
+              href="https://www.surfrider.org/programs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore coasts and climate</a>
+          </article>
+
+          <article class="mission-card">
+            <img src="images/icon-water.svg" alt="" width="40" height="40">
+            <h3>Clean Water</h3>
+            <p>Protecting the health and sustainability of our planet's most precious resource.</p>
+            <a
+              class="link-plain"
+              href="https://www.surfrider.org/programs"
+              target="_blank"
+              rel="noopener noreferrer"
+            >Explore clean water</a>
+          </article>
+        </div>
       </div>
 
-      <span class="mission-side mission-side-right side-label">
+      <span
+        class="mission-side mission-side-right side-label"
+        aria-hidden="true"
+      >
         Where the land meets the sea
       </span>
     </section>
 
     <section class="latest-news" id="news" aria-labelledby="news-title">
-      <span class="news-side side-label">Latest Updates</span>
+      <span class="news-side side-label" aria-hidden="true">Latest Updates</span>
 
       <img
         class="news-image"
@@ -139,7 +184,7 @@
       id="campaigns"
       aria-labelledby="campaign-title"
     >
-      <span class="campaign-side side-label">Our Campaigns</span>
+      <span class="campaign-side side-label" aria-hidden="true">Our Campaigns</span>
 
       <div class="campaign-content">
         <p class="campaign-label">Featured Campaign</p>
@@ -164,6 +209,8 @@
           <a
             class="feature-button btn-dark feature-button-outline"
             href="https://www.surfrider.org/campaigns"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             View All
           </a>
@@ -211,7 +258,7 @@
     </section>
 
     <section class="network" id="volunteer" aria-labelledby="network-title">
-      <span class="network-side side-label">Our Network</span>
+      <span class="network-side side-label" aria-hidden="true">Our Network</span>
 
       <div class="network-content">
         <p class="network-label">Get Involved</p>
@@ -238,7 +285,12 @@
           <option value="WA">Washington</option>
         </select>
 
-        <p id="network-message" class="form-message" role="status"></p>
+        <p
+          id="network-message"
+          class="form-message"
+          role="status"
+          aria-live="polite"
+        ></p>
       </div>
 
       <div class="network-art">
@@ -322,6 +374,8 @@
       <a
         class="feature-button btn-dark support-shop"
         href="https://shop.surfrider.org/"
+        target="_blank"
+        rel="noopener noreferrer"
       >
         Shop Now
       </a>
@@ -331,8 +385,12 @@
   <footer class="footer">
     <div class="footer-main">
       <div class="footer-layout">
-        <a class="footer-logo" href="./index.html">
-          <img src="images/Group.png" alt="Surfrider Foundation">
+        <a
+          class="footer-logo"
+          href="./index.html"
+          aria-label="Surfrider Foundation home"
+        >
+          <img src="images/Group.png" alt="">
         </a>
 
         <section
@@ -345,7 +403,12 @@
             Demo form: subscriptions are not connected.
           </p>
 
-          <form class="newsletter-form">
+          <form
+            class="newsletter-form"
+            novalidate
+            action="#newsletter-status"
+            method="post"
+          >
             <div class="form-name-row">
               <div class="form-field">
                 <label for="first-name">First name<span>*</span></label>
@@ -410,7 +473,7 @@
               Subscribe
             </button>
 
-            <p class="form-message" role="status"></p>
+            <p id="newsletter-status" class="form-message" role="status" aria-live="polite"></p>
           </form>
         </section>
 
@@ -418,7 +481,33 @@
           class="footer-navigation"
           aria-label="Footer navigation"
           id="footerNav"
-        ></nav>
+        >
+          <div class="footer-column">
+            <h3>About Us</h3>
+            <ul>
+              <li><a class="link-plain" href="#mission">Mission</a></li>
+              <li><a class="link-plain" href="#news">News</a></li>
+              <li><a class="link-plain" href="#programs">Programs</a></li>
+              <li><a class="link-plain" href="#campaigns">Campaigns</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Give</h3>
+            <ul>
+              <li><a class="link-plain" href="#donate">Donate</a></li>
+              <li><a class="link-plain" href="#shop">Shop</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Get Involved</h3>
+            <ul>
+              <li><a class="link-plain" href="#volunteer">Volunteer</a></li>
+              <li><a class="link-plain" href="#campaigns">Campaigns</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
     </div>
 
@@ -428,16 +517,30 @@
           class="footer-legal"
           aria-label="Legal links"
           id="footerLegal"
-        ></nav>
+        >
+          <a class="link-plain" href="#purpose">About our purpose</a>
+          <a
+            class="link-plain"
+            href="#demo-dialog"
+            data-demo="true"
+            title="Demo: this feature is not connected"
+          >Privacy Policy</a>
+          <a
+            class="link-plain"
+            href="#demo-dialog"
+            data-demo="true"
+            title="Demo: this feature is not connected"
+          >Contact Us</a>
+        </nav>
 
         <p>© 2026 microaim</p>
       </div>
     </div>
   </footer>
 
-  <dialog id="demo-dialog" aria-labelledby="demo-title">
+  <dialog id="demo-dialog" aria-labelledby="demo-title" aria-describedby="demo-message">
     <h2 id="demo-title">Demo page</h2>
-    <p id="demo-message"></p>
+    <p id="demo-message" role="status" aria-live="polite" tabindex="-1"></p>
 
     <form method="dialog">
       <button class="feature-button btn-dark" type="submit">Close</button>
@@ -454,7 +557,7 @@
       class="giving-close"
       type="button"
       aria-label="Close donation window"
-    >×</button
+    >×</button>
 
     <h2 id="giving-dialog-title">
       <svg
@@ -485,7 +588,6 @@
       </svg>
 
       Secure donation
-  
     </h2>
 
     <fieldset class="giving-frequency">
@@ -550,7 +652,12 @@
       <span class="giving-currency">EUR</span>
     </label>
 
-    <p class="giving-error" id="giving-error" role="status"></p>
+    <p
+      class="giving-error"
+      id="giving-error"
+      role="status"
+      aria-live="polite"
+    ></p>
 
     <div class="giving-bottom">
       <button
@@ -606,6 +713,7 @@
 
       <div
         class="giving-card-brands"
+        role="group"
         aria-label="Card methods shown for demonstration"
       >
         <span>VISA</span>
@@ -622,6 +730,7 @@
         class="giving-message"
         id="giving-message"
         role="status"
+        aria-live="polite"
         tabindex="-1"
       ></p>
     </div>
