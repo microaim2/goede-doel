@@ -1,3 +1,17 @@
+"use strict";
+
+// Native dialogs handle Escape, focus trapping and focus restoration.
+document.querySelectorAll("dialog").forEach((dialog) => {
+  dialog.addEventListener("click", (event) => {
+    if (event.target !== dialog) return;
+    const rect = dialog.getBoundingClientRect();
+    if (event.clientX < rect.left || event.clientX > rect.right ||
+        event.clientY < rect.top || event.clientY > rect.bottom) {
+      dialog.close();
+    }
+  });
+});
+
 function getReadableText(element) {
   const copy = element.cloneNode(true);
 
@@ -25,24 +39,6 @@ function openDemoDialog(link) {
   }
 }
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  const href = link.getAttribute("href");
-  const targetId = href.slice(1);
-
-  if (!targetId) return;
-
-  if (targetId !== "demo-dialog" && !document.getElementById(targetId)) {
-    link.href = "#demo-dialog";
-    link.dataset.demo = "true";
-    link.title = "Demo: this feature is not connected";
-  }
-
-  if (link.dataset.demo) {
-    const label = link.getAttribute("aria-label") || getReadableText(link);
-    link.setAttribute("aria-label", `${label} (demo)`);
-  }
-});
-
 document.addEventListener("click", (event) => {
   const link = event.target.closest("a[data-demo]");
 
@@ -56,8 +52,13 @@ const newsletterForm = document.querySelector(".newsletter-form");
 const newsletterStatus = newsletterForm?.querySelector("[role='status']");
 
 if (newsletterForm) {
+  newsletterForm.querySelector("button[type=submit]").disabled = false;
   newsletterForm.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    newsletterForm.querySelectorAll("input").forEach((input) => {
+      input.value = input.value.trim();
+    });
 
     if (!newsletterForm.checkValidity()) {
       newsletterForm.reportValidity();
@@ -165,18 +166,6 @@ stateSelect?.addEventListener("change", () => {
 
   closeButton.addEventListener("click", () => dialog.close());
 
-  dialog.addEventListener("click", (event) => {
-    if (event.target !== dialog) return;
-
-    const rect = dialog.getBoundingClientRect();
-    const outside =
-      event.clientX < rect.left ||
-      event.clientX > rect.right ||
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom;
-
-    if (outside) dialog.close();
-  });
 
   dialog.addEventListener("close", () => {
     comment.value = "";
@@ -346,13 +335,13 @@ stateSelect?.addEventListener("change", () => {
       target: "#volunteer"
     },
 
-    sunscreen: {
+    "beach-day": {
       title: "Plan a Thoughtful Beach Day",
       image: "images/news-ocean.jpg",
       alt: "Swimmer exploring the ocean above a coral reef",
       paragraphs: [
         "A thoughtful beach day starts with preparation. Bring what you need, read visitor guidance, and plan how you will take packaging and litter home.",
-        "This school project does not provide a sunscreen ingredient guide. For product and sun-protection advice, consult a qualified health professional and relevant local guidance."
+        "Use a reusable bag for your belongings, avoid disposable packaging where possible, and leave the beach as clean as you found it."
       ],
       tip: "Make a reusable beach checklist: water bottle, sun protection, belongings, and a bag for your litter.",
       action: "Explore plastic reduction",
@@ -460,18 +449,6 @@ stateSelect?.addEventListener("change", () => {
 
   close.addEventListener("click", () => dialog.close());
 
-  dialog.addEventListener("click", (event) => {
-    if (event.target !== dialog) return;
-
-    const rect = dialog.getBoundingClientRect();
-    const outside =
-      event.clientX < rect.left ||
-      event.clientX > rect.right ||
-      event.clientY < rect.top ||
-      event.clientY > rect.bottom;
-
-    if (outside) dialog.close();
-  });
 
   action.addEventListener("click", (event) => {
     if (currentArticle?.article) {
