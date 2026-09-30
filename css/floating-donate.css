@@ -1,26 +1,43 @@
 .donate-slot {
   display: inline-flex;
-  flex-shrink: 0;
+  flex: 0 0 180px;
+  width: 180px;
+  height: 60px;
+}
+
+.header .donate-button {
+  box-sizing: border-box;
+  display: inline-flex;
   align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 180px;
+  height: 60px;
+  min-height: 60px;
+  padding: 0 20px;
+  border-radius: 12px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  animation: none;
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.header .donate-button.is-floating {
+  position: fixed;
+  right: max(24px, env(safe-area-inset-right));
+  bottom: max(24px, env(safe-area-inset-bottom));
+  z-index: 100;
+  box-shadow: 0 6px 24px #0003;
 }
 
 .footer-bottom {
   padding-bottom: 120px;
 }
 
-.donate-button.is-floating {
-  position: fixed;
-  right: max(24px, env(safe-area-inset-right));
-  bottom: max(24px, env(safe-area-inset-bottom));
-  z-index: 100;
-  min-height: 48px;
-  border-radius: 8px;
-  box-shadow: 0 6px 24px #0003;
-  font-size: 16px;
-}
-
 @media (max-width: 700px) {
-  .donate-button.is-floating {
+  .header .donate-button.is-floating {
     right: max(16px, env(safe-area-inset-right));
     bottom: max(16px, env(safe-area-inset-bottom));
   }

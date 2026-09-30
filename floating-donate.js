@@ -2,17 +2,22 @@
   const header = document.querySelector(".header");
   const button = header?.querySelector(".donate-button");
 
-  if (!header || !button || button.closest(".donate-slot")) return;
+  if (!header || !button) return;
 
-  const slot = document.createElement("span");
-  slot.className = "donate-slot";
-  button.before(slot);
-  slot.append(button);
+  let slot = button.closest(".donate-slot");
+
+  if (!slot) {
+    slot = document.createElement("span");
+    slot.className = "donate-slot";
+    button.before(slot);
+    slot.append(button);
+  }
 
   const reducedMotion = window.matchMedia(
     "(prefers-reduced-motion: reduce)"
   );
-  let floating = false;
+
+  let floating = button.classList.contains("is-floating");
   let animation = null;
 
   function update(animate = true) {
@@ -20,62 +25,65 @@
 
     if (shouldFloat === floating) return;
 
+    // Запоминаем текущее положение, даже во время анимации.
     const before = button.getBoundingClientRect();
-    animation?.cancel();
 
-    if (shouldFloat) {
-      slot.style.width = `${before.width}px`;
-      slot.style.height = `${before.height}px`;
-    }
+    animation?.cancel();
+    animation = null;
 
     button.classList.toggle("is-floating", shouldFloat);
     floating = shouldFloat;
 
-    if (!shouldFloat) {
-      slot.style.width = "";
-      slot.style.height = "";
-    }
-
-    if (!animate || reducedMotion.matches || !shouldFloat) return;
-
     const after = button.getBoundingClientRect();
-    const startTop = Math.max(
-      12,
-      Math.min(before.top, window.innerHeight - before.height - 12)
-    );
-    const startLeft = Math.max(
-      12,
-      Math.min(before.left, window.innerWidth - before.width - 12)
-    );
 
-    animation = button.animate(
+    if (!animate || reducedMotion.matches) return;
+
+    // Плавно перемещаем кнопку от старого положения к новому.
+    const currentAnimation = button.animate(
       [
         {
-          transform: `translate(${startLeft - after.left}px, ${startTop - after.top}px)`
+          transform: `translate(
+            ${before.left - after.left}px,
+            ${before.top - after.top}px
+          )`
         },
-        { transform: "translate(0, 0)" }
+        {
+          transform: "translate(0, 0)"
+        }
       ],
       {
-        duration: 450,
+        duration: 650,
         easing: "cubic-bezier(0.22, 1, 0.36, 1)"
       }
     );
-  }
 
-  update(false);
+    animation = currentAnimation;
+
+    currentAnimation.onfinish = () => {
+      if (animation === currentAnimation) {
+        animation = null;
+      }
+    };
+  }
 
   const observer = new IntersectionObserver(
     () => update(),
     { threshold: 0 }
   );
+
+  update(false);
   observer.observe(header);
 
   window.addEventListener("resize", () => {
     animation?.cancel();
+    animation = null;
     update(false);
   });
 
-  reducedMotion.addEventListener?.("change", () => {
-    if (reducedMotion.matches) animation?.cancel();
+  reducedMotion.addEventListener("change", () => {
+    if (reducedMotion.matches) {
+      animation?.cancel();
+      animation = null;
+    }
   });
 })();
