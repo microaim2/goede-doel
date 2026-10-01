@@ -53,6 +53,46 @@
 
   <main class="main-content" id="main-content" tabindex="-1">
     <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-slides" aria-hidden="true">
+  <img
+    class="hero-slide is-active"
+    src="images/heroslide.png"
+    alt=""
+    fetchpriority="high"
+  >
+  <img
+    class="hero-slide"
+    src="images/heroslidde.png"
+    alt=""
+  >
+  <img
+    class="hero-slide"
+    src="images/hero.jpg"
+    alt=""
+  >
+</div>
+
+<div class="hero-carousel-controls" hidden>
+  <button
+    class="hero-prev"
+    type="button"
+    aria-label="Previous photo"
+  >
+    <span aria-hidden="true">‹</span>
+  </button>
+
+  <span class="hero-counter" role="status" aria-live="polite">
+    1 / 3
+  </span>
+
+  <button
+    class="hero-next"
+    type="button"
+    aria-label="Next photo"
+  >
+    <span aria-hidden="true">›</span>
+  </button>
+</div>
       <div class="hero-content">
         <h1 id="hero-title">Drilling is<br>killing</h1>
 

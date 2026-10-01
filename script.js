@@ -487,3 +487,59 @@ stateSelect?.addEventListener("change", () => {
     }
   });
 })();
+
+(() => {
+  const hero = document.querySelector(".hero");
+  if (!hero) return;
+
+  const slides = [...hero.querySelectorAll(".hero-slide")];
+  const controls = hero.querySelector(".hero-carousel-controls");
+  const previous = hero.querySelector(".hero-prev");
+  const next = hero.querySelector(".hero-next");
+  const counter = hero.querySelector(".hero-counter");
+
+  if (
+    slides.length < 2 ||
+    !controls ||
+    !previous ||
+    !next ||
+    !counter
+  ) {
+    return;
+  }
+
+  let current = 0;
+
+  function showSlide(index) {
+    current = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("is-active", slideIndex === current);
+    });
+
+    counter.textContent = `${current + 1} / ${slides.length}`;
+  }
+
+  previous.addEventListener("click", () => {
+    showSlide(current - 1);
+  });
+
+  next.addEventListener("click", () => {
+    showSlide(current + 1);
+  });
+
+  controls.addEventListener("keydown", (event) => {
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      showSlide(current - 1);
+    }
+
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      showSlide(current + 1);
+    }
+  });
+
+  showSlide(0);
+  controls.hidden = false;
+})();

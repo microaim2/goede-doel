@@ -25,7 +25,7 @@
 
     if (shouldFloat === floating) return;
 
-    // Запоминаем текущее положение, даже во время анимации.
+    // zapominaet polozhenie ot kuda buuton prigaet
     const before = button.getBoundingClientRect();
 
     animation?.cancel();

@@ -42,3 +42,44 @@
     bottom: max(16px, env(safe-area-inset-bottom));
   }
 }
+
+.header .donate-button.is-floating {
+  overflow: hidden;
+  isolation: isolate;
+  animation: none;
+}
+
+.header .donate-button.is-floating::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 12px;
+  pointer-events: none;
+
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='16' viewBox='0 0 160 16'%3E%3Cpath d='M0 6 Q40 -2 80 6 T160 6 V16 H0 Z' fill='white' fill-opacity='.22'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 160px 12px;
+}
+
+@keyframes donate-wave-inside {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -160px 0;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .header .donate-button.is-floating::after {
+    animation: donate-wave-inside 4s linear infinite;
+  }
+
+  .header .donate-button.is-floating:hover::after,
+  .header .donate-button.is-floating:focus-visible::after {
+    animation-play-state: paused;
+  }
+}

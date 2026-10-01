@@ -39,3 +39,221 @@
   margin: 0 0 32px;
   font-weight: 700;
 }
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  background-image: none;
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: #344957;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 800ms ease;
+}
+
+.hero-slide.is-active {
+  opacity: 1;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgb(0 0 0 / 65%),
+    rgb(0 0 0 / 20%)
+  );
+}
+
+.hero-carousel-controls {
+  position: absolute;
+  right: 24px;
+  bottom: 100px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border: 1px solid rgb(255 255 255 / 30%);
+  border-radius: 40px;
+  background: rgb(0 0 0 / 45%);
+  color: #fff;
+}
+
+.hero-carousel-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.hero-carousel-controls button:hover {
+  background: rgb(255 255 255 / 20%);
+}
+
+.hero-carousel-controls button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+.hero-counter {
+  min-width: 42px;
+  text-align: center;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 700px) {
+  .hero-carousel-controls {
+    right: 16px;
+    bottom: 60px;
+    gap: 8px;
+    padding: 4px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-slide {
+    transition: none;
+  }
+}
+
+.hero {
+  position: relative;
+}
+
+.hero-carousel-controls {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  pointer-events: none;
+}
+
+.hero-carousel-controls button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 56px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+  font-size: 36px;
+  text-shadow: 0 2px 10px rgb(0 0 0 / 80%);
+  cursor: pointer;
+  pointer-events: auto;
+  transition: background-color 200ms ease;
+}
+
+.hero-carousel-controls .hero-prev {
+  left: 12px;
+}
+
+.hero-carousel-controls .hero-next {
+  right: 12px;
+}
+
+.hero-carousel-controls button:hover {
+  transform: translateY(-50%);
+  background: rgb(0 0 0 / 20%);
+}
+
+.hero-carousel-controls button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.hero-carousel-controls .hero-counter {
+  position: absolute;
+  width: 1px;
+  min-width: 0;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding-inline: 52px;
+  }
+
+  .hero-carousel-controls button {
+    width: 44px;
+    font-size: 28px;
+  }
+
+  .hero-carousel-controls .hero-prev {
+    left: 2px;
+  }
+
+  .hero-carousel-controls .hero-next {
+    right: 2px;
+  }
+}
+
+.hero-carousel-controls button {
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  font-size: 0;
+  transition: background-color 200ms ease;
+}
+
+.hero-carousel-controls button span {
+  display: block;
+  font-family: Arial, sans-serif;
+  font-size: 42px;
+  line-height: 1;
+  transform: translateY(-2px);
+}
+
+.hero-carousel-controls button:hover,
+.hero-carousel-controls button:focus-visible {
+  background: rgb(0 0 0 / 35%);
+}
+
+@media (max-width: 700px) {
+  .hero-carousel-controls button {
+    width: 44px;
+    height: 44px;
+  }
+}
