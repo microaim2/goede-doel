@@ -1,0 +1,137 @@
+.reviews {
+  max-width: 1140px;
+  margin: 100px auto 0;
+  padding: 0 24px;
+  color: var(--color-dark);
+}
+
+.reviews-heading {
+  margin-bottom: 36px;
+  text-align: center;
+}
+
+.reviews-label {
+  margin: 0 0 12px;
+  color: var(--color-accent);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.reviews-heading h2 {
+  margin: 0 0 16px;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -1px;
+}
+
+.reviews-description {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.review-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  margin: 0;
+  padding: 32px;
+  border: 1px solid #dce5ea;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.review-card blockquote {
+  flex: 1;
+  margin: 0 0 28px;
+}
+
+.review-card blockquote p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.review-card blockquote p::before {
+  content: "“";
+}
+
+.review-card blockquote p::after {
+  content: "”";
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid #e8eef1;
+}
+
+.review-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #dcebf2;
+  color: #164c65;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.review-person {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.review-name {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.review-role {
+  color: #52616b;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.reviews-note {
+  margin: 20px 0 0;
+  color: #52616b;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .reviews-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-card {
+    padding: 28px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reviews {
+    margin-top: 70px;
+    padding: 0 12px;
+  }
+
+  .review-card {
+    padding: 24px;
+  }
+}
